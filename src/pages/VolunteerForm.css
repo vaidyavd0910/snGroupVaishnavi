@@ -1,0 +1,253 @@
+.volunteer-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  border: 2px solid #e5e7eb;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.step.active .step-circle {
+  background: linear-gradient(135deg, #3b82f6 60%, #22c55e 100%);
+  color: #fff;
+  border: 2px solid #3b82f6;
+  box-shadow: 0 2px 8px rgba(60,60,100,0.10);
+}
+
+.step.completed .step-circle {
+  background: #22c55e;
+  color: #fff;
+  border: 2px solid #22c55e;
+}
+
+.step-label {
+  font-size: 1rem;
+  color: #888;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 0.1rem;
+  transition: color 0.2s;
+}
+
+.step.active .step-label {
+  color: #222;
+  font-weight: 600;
+}
+
+.step.completed .step-label {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.step-connector {
+  position: absolute;
+  top: 19px;
+  left: 50%;
+  width: 100%;
+  height: 4px;
+  background: #e5e7eb;
+  z-index: 0;
+  transform: translateX(-50%);
+}
+
+.step.completed ~ .step-connector {
+  background: linear-gradient(90deg, #3b82f6 60%, #22c55e 100%);
+}
+
+@media (max-width: 768px) {
+  .step-indicator {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: flex-start;
+  }
+  .step-connector {
+    display: none;
+  }
+}
+
+.form-step {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+select[multiple] {
+  height: 120px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+h3 {
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .volunteer-form-container {
+    padding: 10px;
+  }
+
+  .form-navigation {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.btn-primary, .btn-secondary, .btn-submit {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.btn-submit {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-submit:hover {
+  opacity: 0.9;
+}
+
+button:disabled {
+  background-color: #cccccc !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.status-message {
+  padding: 15px;
+  border-radius: 4px;
+  margin: 20px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+} 
