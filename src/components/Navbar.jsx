@@ -4,7 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import authService from '../services/authService';
 import logo from './logo.png';
-import { FaBars, FaTimes, FaChevronDown, FaUser, FaSignOutAlt, FaTachometerAlt } from 'react-icons/fa';
+import { FaChevronDown, FaSignOutAlt, FaTachometerAlt } from 'react-icons/fa';
+import { AiOutlineClose } from "react-icons/ai";
+import { IoIosMenu } from "react-icons/io";
 
 // Logo component
 const Logo = () => (
@@ -18,16 +20,16 @@ const Logo = () => (
 
 // Button component
 const Button = ({ children, variant = "primary", onClick, className = "", ...props }) => {
-  const baseClasses = "px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-offset-2";
-  
+  const baseClasses = "px-4 py-2 sm:px-6 sm:py-3 rounded-3xl font-semibold transition-all duration-300 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-offset-2";
+
   const variants = {
     primary: "bg-gradient-to-r from-primary-600 to-secondary-600 text-white hover:from-primary-700 hover:to-secondary-700 focus:ring-primary-500 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
     outline: "border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white focus:ring-primary-500",
     ghost: "text-gray-700 hover:bg-gray-100 focus:ring-gray-500"
   };
-  
+
   return (
-    <button 
+    <button
       className={`${baseClasses} ${variants[variant]} ${className}`}
       onClick={onClick}
       {...props}
@@ -41,50 +43,28 @@ const Button = ({ children, variant = "primary", onClick, className = "", ...pro
 const AvatarDropdown = ({ user, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  
-  // Close dropdown when clicking outside
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isOpen && !event.target.closest('.avatar-dropdown')) {
         setIsOpen(false);
       }
     };
-    
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
-  
+
   const toggleDropdown = () => setIsOpen(!isOpen);
-  
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      toggleDropdown();
-    }
-  };
-  
-  const handleLogout = () => {
-    setIsOpen(false);
-    onLogout();
-  };
-  
+  const handleKeyDown = (e) => { if (e.key === 'Enter' || e.key === ' ') toggleDropdown(); };
+  const handleLogout = () => { setIsOpen(false); onLogout(); };
   const handleDashboard = () => {
     setIsOpen(false);
-    if(user.role === 'admin'){
-      navigate('/admin'); 
-    } else if(user.role === 'subadmin'){
-      navigate('/subadmin');
-    }
-    else{
-      navigate('/dashboard');
-    }
+    if (user.role === 'admin') navigate('/admin');
+    else if (user.role === 'subadmin') navigate('/subadmin');
+    else navigate('/dashboard');
   };
-  
-  // Get initials from email
-  const getInitials = (email) => {
-    if (!email) return "U";
-    return email.charAt(0).toUpperCase();
-  };
-  
+  const getInitials = (email) => email ? email.charAt(0).toUpperCase() : "U";
+
   return (
     <div className="avatar-dropdown relative">
       <button
@@ -100,7 +80,7 @@ const AvatarDropdown = ({ user, onLogout }) => {
         </div>
         <FaChevronDown className={`w-3 h-3 text-gray-600 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
-      
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -114,7 +94,6 @@ const AvatarDropdown = ({ user, onLogout }) => {
               <p className="text-sm font-medium text-gray-900 truncate">{user?.email}</p>
               <p className="text-xs text-gray-500 capitalize">{user?.role || 'User'}</p>
             </div>
-            
             <div className="py-1">
               <button
                 onClick={handleDashboard}
@@ -123,7 +102,6 @@ const AvatarDropdown = ({ user, onLogout }) => {
                 <FaTachometerAlt className="w-4 h-4" />
                 <span>Dashboard</span>
               </button>
-              
               <button
                 onClick={handleLogout}
                 className="w-full flex items-center space-x-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200"
@@ -143,22 +121,14 @@ const Navbar = () => {
   const { currentUser, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { 
-      name: "About", 
-      path: "/about",
-      submenu: [
-        { name: "Our Story", path: "/about" },
-        { name: "Our Mission", path: "/mission" },
-        { name: "Our Vision", path: "/vision" },
-      ]
-    },
+    { name: "About", path: "/about", submenu: [{ name: "Our Story", path: "/about" }, { name: "Our Mission", path: "/mission" }, { name: "Our Vision", path: "/vision" }] },
     { name: "Campaigns", path: "/campaigns" },
     { name: "Programs", path: "/programs" },
     { name: "Events", path: "/events" },
@@ -168,110 +138,57 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" }
   ];
 
-  // Handle scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 0);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isMenuOpen && !event.target.closest('.mobile-menu')) {
-        setIsMenuOpen(false);
-      }
-    };
-    
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isMenuOpen]);
+  useEffect(() => { setIsMenuOpen(false); setActiveSubmenu(null); }, [location.pathname]);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  
-  const toggleSubmenu = (submenuName) => {
-    setActiveSubmenu(activeSubmenu === submenuName ? null : submenuName);
-  };
+  const toggleSubmenu = (name) => setActiveSubmenu(activeSubmenu === name ? null : name);
+  const handleLogout = async () => { await authService.logout(); logout(); navigate('/'); };
+  const isActive = (path) => location.pathname === path;
+  const isSubmenuActive = (items) => items.some(item => isActive(item.path));
 
-  const handleLogout = async () => {
-    try {
-      await authService.logout();
-      logout();
-      navigate('/');
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
+  useEffect(() => { document.body.style.overflow = isMenuOpen ? 'hidden' : ''; }, [isMenuOpen]);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
-
-  const isSubmenuActive = (submenuItems) => {
-    return submenuItems.some(item => isActive(item.path));
-  };
-  
   return (
-    <header className={`relative z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
-        : 'bg-white/90 backdrop-blur-sm'
-    }`}>
+    <header className={`bg-white text-[#101840] sticky top-0 z-50 border-b border-gray-200 transition-shadow duration-300 ${scrolled ? 'shadow-sm' : ''}`}>
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
           <Logo />
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((link) => (
+            {navLinks.map(link => (
               link.submenu ? (
                 <div key={link.name} className="relative group">
-                  <button 
-                    className={`flex items-center space-x-1 px-4 py-2 rounded-xl font-medium transition-all duration-300 ${
-                      isSubmenuActive(link.submenu) 
-                        ? 'text-primary-600 bg-primary-50' 
-                        : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                    }`}
+                  <button
+                    className={`flex items-center space-x-1 px-4 py-2 rounded-xl font-medium transition-all duration-300 ${isSubmenuActive(link.submenu) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
                     onClick={() => toggleSubmenu(link.name)}
                     aria-expanded={activeSubmenu === link.name}
-                    aria-haspopup="true"
                   >
                     <span>{link.name}</span>
-                    <FaChevronDown className={`w-3 h-3 transition-transform duration-300 ${
-                      activeSubmenu === link.name ? 'rotate-180' : ''
-                    }`} />
+                    <FaChevronDown className={`w-3 h-3 transition-transform duration-300 ${activeSubmenu === link.name ? 'rotate-180' : ''}`} />
                   </button>
-                  
                   <AnimatePresence>
                     {activeSubmenu === link.name && (
                       <motion.div
-                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
                         className="absolute top-full left-0 mt-2 w-48 bg-white rounded-2xl shadow-2xl border border-gray-200 py-2"
                       >
-                        {link.submenu.map((subItem) => (
+                        {link.submenu.map(sub => (
                           <Link
-                            key={subItem.name}
-                            to={subItem.path}
-                            className={`block px-4 py-2 text-sm transition-colors duration-200 ${
-                              isActive(subItem.path) 
-                                ? 'text-primary-600 bg-primary-50' 
-                                : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                            }`}
+                            key={sub.name}
+                            to={sub.path}
+                            className={`block px-4 py-2 text-sm ${isActive(sub.path) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
                             onClick={() => setActiveSubmenu(null)}
                           >
-                            {subItem.name}
+                            {sub.name}
                           </Link>
                         ))}
                       </motion.div>
@@ -282,222 +199,141 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 ${
-                    isActive(link.path) 
-                      ? 'text-primary-600 bg-primary-50' 
-                      : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                  }`}
-                  aria-current={isActive(link.path) ? 'page' : undefined}
+                  className={`px-4 py-2 rounded-xl font-medium ${isActive(link.path) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                  onClick={() => setActiveSubmenu(null)} // <-- close any submenu
                 >
                   {link.name}
                 </Link>
               )
             ))}
-            
-            {/* Dashboard link (only if logged in) */}
-            {currentUser && currentUser.role !== 'admin' && (
-              <Link
-                to="/dashboard"
-                className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 ${
-                  isActive('/dashboard') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-                aria-current={isActive('/dashboard') ? 'page' : undefined}
-              >
-                Dashboard
-              </Link>
-            )}
           </nav>
-          
-          {/* Right side - Auth buttons or avatar */}
+
+          {/* Right Side */}
           <div className="flex items-center space-x-3">
-            {/* Desktop auth buttons or avatar */}
             <div className="hidden lg:flex items-center space-x-3">
-              {currentUser ? (
-                <AvatarDropdown user={currentUser} onLogout={handleLogout} />
-              ) : (
+              {currentUser ? <AvatarDropdown user={currentUser} onLogout={handleLogout} /> : (
                 <>
-                  <Link to="/login">
-                    <Button variant="outline">Login</Button>
-                  </Link>
-                  <Link to="/register">
-                    <Button>Register</Button>
-                  </Link>
+                  <Link to="/login"><Button variant="outline">Login</Button></Link>
+                  <Link to="/register"><Button>Register</Button></Link>
                 </>
               )}
             </div>
-            
-            {/* Mobile menu button */}
-            <button
-              className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              onClick={toggleMenu}
-              aria-expanded={isMenuOpen}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? (
-                <FaTimes className="w-6 h-6 text-gray-700" />
-              ) : (
-                <FaBars className="w-6 h-6 text-gray-700" />
-              )}
-            </button>
+
+            {/* <button
+              className="lg:hidden ml-auto inline-flex items-center justify-center h-10 w-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+              onClick={() => setIsMenuOpen(true)}
+              aria-label="Open menu"
+            > */}
+            {/* menu */}
+            <div className="lg:hidden">
+
+              <IoIosMenu size={30} onClick={() => setIsMenuOpen(true)} />
+            </div>
+
+            {/* </button> */}
           </div>
         </div>
       </div>
-      
-      {/* Mobile Side Drawer Menu */}
+
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-              onClick={toggleMenu}
+              className="fixed inset-0 bg-black/40 z-[50]"
+              onClick={() => setIsMenuOpen(false)}
             />
-            
-            {/* Drawer */}
-            <motion.aside
-              className="mobile-menu fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 lg:hidden"
+            <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
+              className="fixed inset-y-0 left-0 w-full bg-white z-[60] flex flex-col"
             >
-              <div className="flex flex-col h-full">
-                {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                  <Logo />
+              <div className=" justify-between relative h-14 border-b border-gray-100 flex items-center px-4">
+                <Logo />
+                {/* <button
+                  className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 inline-flex items-center justify-center rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <AiOutlineClose />
+                </button> */}
+
+                <AiOutlineClose size={20} onClick={() => setIsMenuOpen(false)} />
+
+              </div>
+
+              <nav className="flex-1 p-4 space-y-1 text-[#101840] overflow-y-auto">
+                {navLinks.map(link => (
+                  link.submenu ? (
+                    <div key={link.name} className="space-y-1">
+                      <button
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium ${isSubmenuActive(link.submenu) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                        onClick={() => toggleSubmenu(link.name)}
+                        aria-expanded={activeSubmenu === link.name}
+                      >
+                        <span>{link.name}</span>
+                        <FaChevronDown className={`w-3 h-3 transition-transform duration-300 ${activeSubmenu === link.name ? 'rotate-180' : ''}`} />
+                      </button>
+                      <AnimatePresence>
+                        {activeSubmenu === link.name && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="ml-4 space-y-1 overflow-hidden"
+                          >
+                            {link.submenu.map(sub => (
+                              <Link
+                                key={sub.name}
+                                to={sub.path}
+                                className={`block px-4 py-2 rounded-lg ${isActive(sub.path) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                                onClick={() => { setIsMenuOpen(false); setActiveSubmenu(null); }}
+                              >
+                                {sub.name}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link
+                      key={link.name}
+                      to={link.path}
+                      className={`block px-4 py-3 rounded-xl font-medium ${isActive(link.path) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                      onClick={() => { setIsMenuOpen(false); setActiveSubmenu(null); }}
+                    >
+                      {link.name}
+                    </Link>
+                  )
+                ))}
+              </nav>
+
+              {!currentUser && (
+                <div className="p-4 border-t border-gray-200 space-y-3">
+                  <Link to="/login"><Button variant="outline" className="w-full">Login</Button></Link>
+                  <Link to="/register"><Button className="w-full">Register</Button></Link>
+                </div>
+              )}
+
+              {currentUser && (
+                <div className="p-4 border-t border-gray-200">
                   <button
-                    className="p-2 rounded-xl hover:bg-gray-100 transition-colors duration-300"
-                    onClick={toggleMenu}
-                    aria-label="Close menu"
+                    onClick={handleLogout}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-3 text-red-600 hover:bg-red-50 rounded-xl font-medium transition-all duration-300"
                   >
-                    <FaTimes className="w-6 h-6 text-gray-700" />
+                    <FaSignOutAlt className="w-4 h-4" />
+                    <span>Logout</span>
                   </button>
                 </div>
-                
-                {/* User info */}
-                {currentUser && (
-                  <div className="p-6 border-b border-gray-200">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full flex items-center justify-center text-white font-semibold">
-                        {currentUser.email.charAt(0).toUpperCase()}
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900 truncate">{currentUser.email}</p>
-                        <p className="text-xs text-gray-500 capitalize">{currentUser.role || 'User'}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
-                {/* Navigation */}
-                <nav className="flex-1 p-6 space-y-2">
-                  {navLinks.map((link) => (
-                    link.submenu ? (
-                      <div key={link.name} className="space-y-1">
-                        <button
-                          className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                            isSubmenuActive(link.submenu) 
-                              ? 'text-primary-600 bg-primary-50' 
-                              : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                          }`}
-                          onClick={() => toggleSubmenu(link.name)}
-                          aria-expanded={activeSubmenu === link.name}
-                          aria-haspopup="true"
-                        >
-                          <span>{link.name}</span>
-                          <FaChevronDown className={`w-3 h-3 transition-transform duration-300 ${
-                            activeSubmenu === link.name ? 'rotate-180' : ''
-                          }`} />
-                        </button>
-                        <AnimatePresence>
-                          {activeSubmenu === link.name && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.2 }}
-                              className="ml-4 space-y-1"
-                            >
-                              {link.submenu.map((subItem) => (
-                                <Link
-                                  key={subItem.name}
-                                  to={subItem.path}
-                                  className={`block px-4 py-2 text-sm rounded-lg transition-colors duration-200 ${
-                                    isActive(subItem.path) 
-                                      ? 'text-primary-600 bg-primary-50' 
-                                      : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
-                                  }`}
-                                  onClick={toggleMenu}
-                                >
-                                  {subItem.name}
-                                </Link>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    ) : (
-                      <Link
-                        key={link.name}
-                        to={link.path}
-                        className={`block px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                          isActive(link.path) 
-                            ? 'text-primary-600 bg-primary-50' 
-                            : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                        }`}
-                        onClick={toggleMenu}
-                      >
-                        {link.name}
-                      </Link>
-                    )
-                  ))}
-                  
-                  {currentUser && currentUser.role !== 'admin' && (
-                    <Link
-                      to="/dashboard"
-                      className={`block px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                        isActive('/dashboard') 
-                          ? 'text-primary-600 bg-primary-50' 
-                          : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                      }`}
-                      onClick={toggleMenu}
-                    >
-                      Dashboard
-                    </Link>
-                  )}
-                </nav>
-                
-                {/* Auth buttons for mobile */}
-                {!currentUser && (
-                  <div className="p-6 border-t border-gray-200 space-y-3">
-                    <Link to="/login" className="block">
-                      <Button variant="outline" className="w-full">Login</Button>
-                    </Link>
-                    <Link to="/register" className="block">
-                      <Button className="w-full">Register</Button>
-                    </Link>
-                  </div>
-                )}
-                
-                {/* Logout for mobile */}
-                {currentUser && (
-                  <div className="p-6 border-t border-gray-200">
-                    <button 
-                      onClick={handleLogout}
-                      className="w-full flex items-center justify-center space-x-2 px-4 py-3 text-red-600 hover:bg-red-50 rounded-xl font-medium transition-all duration-300"
-                    >
-                      <FaSignOutAlt className="w-4 h-4" />
-                      <span>Logout</span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            </motion.aside>
+              )}
+            </motion.div>
           </>
         )}
       </AnimatePresence>
@@ -505,4 +341,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

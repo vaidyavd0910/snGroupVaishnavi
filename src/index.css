@@ -112,6 +112,16 @@ body {
   padding: 0;
 }
 
+/* Prevent horizontal scroll globally */
+html, body, #root {
+  overflow-x: hidden;
+}
+
+/* Utilities */
+.text-black-important {
+  color: #000 !important;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
