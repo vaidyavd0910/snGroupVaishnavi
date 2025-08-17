@@ -6,206 +6,118 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-50  pt-5 text-gray-800 border-t border-gray-200">
-      <div className="mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center mr-3">
-                <FaHeart className="w-6 h-6 text-white" />
+    <footer className="text-slate-200 bg-gradient-to-b from-[#0d1733] to-[#0b1430]">
+      {/* Top section */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        {/* Desktop: three columns | Tablet: two rows | Mobile: stacked */}
+        <div className="flex flex-col gap-10 md:grid md:grid-cols-12 md:items-start md:gap-y-0 md:gap-x-16 lg:gap-x-20">
+          {/* Brand / Left */}
+          <div className="md:col-span-4 lg:col-span-4 md:pr-16 lg:pr-20">
+            <div className="flex items-center gap-3 mb-5 md:mb-6">
+              <div className="h-10 w-10 rounded-xl bg-primary-500/90 flex items-center justify-center">
+                <FaHeart className="h-5 w-5 text-white" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">SN Trust</span>
+              <span className="text-2xl font-semibold tracking-tight text-white">SN Trust</span>
             </div>
-            <p className="text-gray-600 leading-relaxed mb-8">
-              We are India's most trusted and transparent crowdfunding platform, 
-              with a vision to create a social impact. Our unique model allows 
-              people from across the globe to donate towards raising funds for 
-              products required by NGOs and charities in India.
+            <p className="text-slate-300/90 leading-relaxed max-w-md">
+              We are India's most trusted and transparent crowdfunding platform, with a vision to create a social impact. Our unique model allows people from across the globe to donate towards raising funds for products required by NGOs and charities in India.
             </p>
             
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
+            {/* Stats (kept from original, placed after socials) */}
+            <div className="mt-6 grid grid-cols-3 gap-4 max-w-md">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600">₹300+ Cr</div>
-                <div className="text-sm text-gray-500">Worth Donations</div>
+                <div className="text-xl md:text-2xl font-bold text-primary-400">₹300+ Cr</div>
+                <div className="text-xs md:text-sm text-slate-400">Worth Donations</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600">15 Lakhs</div>
-                <div className="text-sm text-gray-500">Donor Transactions</div>
+                <div className="text-xl md:text-2xl font-bold text-primary-400">15 Lakhs</div>
+                <div className="text-xs md:text-sm text-slate-400">Donor Transactions</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600">1400+</div>
-                <div className="text-sm text-gray-500">NGOs Impacted</div>
+                <div className="text-xl md:text-2xl font-bold text-primary-400">1400+</div>
+                <div className="text-xs md:text-sm text-slate-400">NGOs Impacted</div>
               </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b-2 border-primary-500 inline-block text-gray-900">
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/about" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/campaigns" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  Campaigns
-                </Link>
-              </li>
-              <li>
-                <Link to="/programs" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  Programs
-                </Link>
-              </li>
-              <li>
-                <Link to="/events" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  Contact
-                </Link>
-              </li>
-            </ul>
+          {/* Navigation / Center */}
+          <div className="md:col-span-5 lg:col-span-5 md:pl-12 lg:pl-16">
+            <div className="grid grid-cols-2 gap-3 md:gap-10 lg:gap-12">
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-4">Quick Links</h4>
+                <ul className="space-y-3">
+                  <li><Link to="/about" className="text-slate-300 hover:text-white hover:underline transition-colors">About Us</Link></li>
+                  <li><Link to="/campaigns" className="text-slate-300 hover:text-white hover:underline transition-colors">Campaigns</Link></li>
+                  <li><Link to="/programs" className="text-slate-300 hover:text-white hover:underline transition-colors">Programs</Link></li>
+                  <li><Link to="/events" className="text-slate-300 hover:text-white hover:underline transition-colors">Events</Link></li>
+                  <li><Link to="/blog" className="text-slate-300 hover:text-white hover:underline transition-colors">Blog</Link></li>
+                  <li><Link to="/contact" className="text-slate-300 hover:text-white hover:underline transition-colors">Contact</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-4">Support</h4>
+                <ul className="space-y-3">
+                  <li><Link to="/how-it-works" className="text-slate-300 hover:text-white hover:underline transition-colors">How It Works</Link></li>
+                  <li><Link to="/faqs" className="text-slate-300 hover:text-white hover:underline transition-colors">FAQs</Link></li>
+                  <li><Link to="/volunteer-join" className="text-slate-300 hover:text-white hover:underline transition-colors">Join as Volunteer</Link></li>
+                  <li><Link to="/sn-arya-mitra" className="text-slate-300 hover:text-white hover:underline transition-colors">SN Arya Mitra</Link></li>
+                  <li><Link to="/donate" className="text-slate-300 hover:text-white hover:underline transition-colors">Donate Monthly</Link></li>
+                  <li><Link to="/gift-cards" className="text-slate-300 hover:text-white hover:underline transition-colors">Gift Cards</Link></li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          {/* Support */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b-2 border-primary-500 inline-block text-gray-900">
-              Support
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/how-it-works" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  How It Works
-                </Link>
-              </li>
-              <li>
-                <Link to="/faqs" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link to="/volunteer-join" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  Join as Volunteer
-                </Link>
-              </li>
-              <li>
-                <Link to="/sn-arya-mitra" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  SN Arya Mitra
-                </Link>
-              </li>
-              <li>
-                <Link to="/donate" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  Donate Monthly
-                </Link>
-              </li>
-              <li>
-                <Link to="/gift-cards" className="text-gray-600 hover:text-primary-600 transition-colors duration-200">
-                  Gift Cards
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b-2 border-primary-500 inline-block text-gray-900">
-              Contact Us
-            </h3>
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-gray-600">5th Main Rd, Sector 6, HSR Layout,</p>
-                  <p className="text-gray-600">Bangalore, Karnataka, 560102</p>
+          {/* Right: Contact + Socials */}
+          <div className="md:col-span-3  lg:col-span-3 text-left">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-5 md:mb-4">Contact Us</h4>
+            <div className="space-y-4 md:space-y-3 mb-3 md:mb-4 text-slate-200/90">
+              <div className="flex items-start justify-start gap-3">
+                <FaMapMarkerAlt className="h-4 w-4 mt-0.5 text-primary-400 flex-shrink-0" />
+                <div className="text-left">
+                  <p>5th Main Rd, Sector 6, HSR Layout,</p>
+                  <p>Bangalore, Karnataka, 560102</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <FaPhone className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                <p className="text-gray-600">+91 8045685000</p>
+              <div className="flex items-center justify-start gap-3">
+                <FaPhone className="h-4 w-4 text-primary-400 flex-shrink-0" />
+                <a href="tel:+918045685000" className="hover:text-white transition-colors">+91 8045685000</a>
               </div>
-              <div className="flex items-center space-x-3">
-                <FaEnvelope className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                <p className="text-gray-600">info@sntrust.com</p>
+              <div className="flex items-center justify-start gap-3">
+                <FaEnvelope className="h-4 w-4 text-primary-400 flex-shrink-0" />
+                <a href="mailto:info@sntrust.com" className="hover:text-white transition-colors">info@sntrust.com</a>
               </div>
             </div>
-            
-            {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-gray-900">Find Us On</h4>
-              <div className="flex space-x-4">
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-primary-500 hover:border-primary-500 transition-colors duration-200 group shadow-sm"
-                  aria-label="Facebook"
-                >
-                  <FaFacebook className="w-5 h-5 text-gray-600 group-hover:text-white" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-primary-500 hover:border-primary-500 transition-colors duration-200 group shadow-sm"
-                  aria-label="Twitter"
-                >
-                  <FaTwitter className="w-5 h-5 text-gray-600 group-hover:text-white" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-primary-500 hover:border-primary-500 transition-colors duration-200 group shadow-sm"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram className="w-5 h-5 text-gray-600 group-hover:text-white" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-primary-500 hover:border-primary-500 transition-colors duration-200 group shadow-sm"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin className="w-5 h-5 text-gray-600 group-hover:text-white" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-primary-500 hover:border-primary-500 transition-colors duration-200 group shadow-sm"
-                  aria-label="YouTube"
-                >
-                  <FaYoutube className="w-5 h-5 text-gray-600 group-hover:text-white" />
-                </a>
-              </div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-3">Find Us On</h4>
+            <div className="flex items-center justify-start gap-3">
+              <a href="#" aria-label="Facebook" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
+                <FaFacebook className="h-4 w-4 text-slate-200" />
+              </a>
+              <a href="#" aria-label="Instagram" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
+                <FaInstagram className="h-4 w-4 text-slate-200" />
+              </a>
+              <a href="#" aria-label="Twitter" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
+                <FaTwitter className="h-4 w-4 text-slate-200" />
+              </a>
+              <a href="#" aria-label="YouTube" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
+                <FaYoutube className="h-4 w-4 text-slate-200" />
+              </a>
+              <a href="#" aria-label="LinkedIn" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
+                <FaLinkedin className="h-4 w-4 text-slate-200" />
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="border-t border-gray-300 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-500 text-sm">
-              © {currentYear} SN Trust | All rights reserved.
-            </p>
-            <div className="flex space-x-6">
-              <Link 
-                to="/terms" 
-                className="text-gray-500 hover:text-primary-600 transition-colors duration-200 text-sm"
-              >
-                Terms of Use
-              </Link>
-              <Link 
-                to="/privacy" 
-                className="text-gray-500 hover:text-primary-600 transition-colors duration-200 text-sm"
-              >
-                Privacy Policy
-              </Link>
-            </div>
+        {/* Divider */}
+        <div className="mt-10 lg:mt-14 h-px w-full bg-white/10" />
+
+        {/* Bottom row */}
+        <div className="mt-6 lg:mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <p className="text-sm text-slate-400">© {currentYear} SN Trust | All rights reserved.</p>
+          <div className="flex items-center gap-6 text-sm">
+            <Link to="/terms" className="text-slate-300 hover:text-white hover:underline transition-colors">Terms of Use</Link>
+            <Link to="/privacy" className="text-slate-300 hover:text-white hover:underline transition-colors">Privacy Policy</Link>
           </div>
         </div>
       </div>
@@ -213,4 +125,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;
