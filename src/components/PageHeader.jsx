@@ -17,7 +17,7 @@ const PageHeader = ({ title, description, backgroundImage }) => {
         transition={{ duration: 0.6 }}
       >
         <h1>{title}</h1>
-        {description && <p>{description}</p>}
+        {description && <p>{description}</p>} 
       </motion.div>
     </div>
   );
