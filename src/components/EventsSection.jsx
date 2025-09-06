@@ -167,7 +167,7 @@ const EventsSection = () => {
                 key={category.key}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 flex items-center space-x-2 ${
                   activeCategory === category.key 
-                    ? 'bg-white text-primary-600 shadow-soft' 
+                    ? 'bg-white text-primary-500 shadow-soft' 
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
                 onClick={() => setActiveCategory(category.key)}

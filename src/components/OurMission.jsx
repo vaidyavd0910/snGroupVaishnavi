@@ -11,35 +11,35 @@ const OurMission = () => {
       title: "Environmental Conservation",
       description: "We strive to protect and preserve our planet by promoting awareness about environmental issues. Our initiatives include tree plantation drives, waste management programs, and campaigns to reduce plastic usage. We believe that a healthy environment is essential for the well-being of present and future generations.",
       icon: <FaLeaf />,
-      color: "#4CAF50"
+      color: "#D14343"
     },
     {
       id: 2,
       title: "Education",
       description: "We are committed to providing quality education to children and youth, particularly from marginalized communities. Our programs aim to enhance literacy rates, provide vocational training, and create learning opportunities that empower individuals to achieve their full potential. We believe that education is the key to breaking the cycle of poverty.",
       icon: <FaGraduationCap />,
-      color: "#2196F3"
+      color: "#D14343"
     },
     {
       id: 3,
       title: "Healthcare",
       description: "Access to quality healthcare is a fundamental right. Our mission includes organizing medical camps, health awareness programs, and providing support for those in need of medical assistance. We aim to improve healthcare access and educate communities about preventive health measures to promote overall well-being.",
       icon: <FaHeartbeat />,
-      color: "#E91E63"
+      color: "#D14343"
     },
     {
       id: 4,
       title: "Community Empowerment",
       description: "We believe in empowering communities through skill development and economic opportunities. Our initiatives focus on providing training programs that equip individuals with the skills needed to secure employment or start their own businesses. By fostering self-reliance, we aim to uplift entire communities.",
       icon: <FaPeopleCarry />,
-      color: "#FF9800"
+      color: "#D14343"
     },
     {
       id: 5,
       title: "Advocacy and Awareness",
       description: "We actively engage in advocacy efforts to raise awareness about social issues affecting our communities. By collaborating with local stakeholders and policymakers, we aim to influence positive change and promote policies that support sustainable development.",
       icon: <FaBullhorn />,
-      color: "#9C27B0"
+      color: "#D14343"
     }
   ];
 
@@ -51,8 +51,8 @@ const OurMission = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1>Our Mission</h1>
-        <div className="mission-underline"></div>
+        <h1>Our <span className='text-primary-500'>Mission</span></h1>
+        <div className="mission-underline bg-[#D14343]"></div>
         <p className="mission-intro">
           Through focused efforts, SN Group Foundation is dedicated to creating a more just and
           sustainable world for everyone. Together, we can make a difference and build a brighter future for
@@ -72,7 +72,7 @@ const OurMission = () => {
             transition={{ duration: 0.6, delay: index * 0.2 }}
           >
             <div className="mission-area-content">
-              <div className="mission-area-icon" style={{ color: area.color, backgroundColor: `${area.color}15` }}>
+              <div className="mission-area-icon" style={{ color: "white", backgroundColor: "#D14343" }}>
                 {area.icon}
               </div>
               <div className="mission-area-text">
@@ -113,7 +113,7 @@ const OurMission = () => {
           <button 
             className="join-mission-btn glassmorphism-btn donate-btn"
             style={{
-              background: '#3b82f6',
+              background: '#D14343',
               backdropFilter: 'blur(5px)',
               border: '1px solid rgba(255, 255, 255, 0.3)',
               boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
@@ -129,9 +129,9 @@ const OurMission = () => {
             style={{
               background: 'rgba(255, 255, 255, 0.15)',
               backdropFilter: 'blur(5px)',
-              border: '2px solid #3b82f6',
+              border: '2px solid #D14343',
               boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
-              color: '#3b82f6'
+              color: '#D14343'
             }}
             onClick={() => navigate('/volunteer-join')}
           >

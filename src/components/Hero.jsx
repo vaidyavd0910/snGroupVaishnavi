@@ -100,7 +100,7 @@ const Hero = () => {
 
   return (
     <motion.section 
-      className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 overflow-hidden"
+      className="relative min-h-screen bg-[#F2F2F2] overflow-hidden"
     >
       {/* Animated Background */}
       <div className="absolute inset-0">
@@ -128,28 +128,28 @@ const Hero = () => {
               className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
               variants={itemVariants}
             >
-              <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-              <span className="text-xs sm:text-sm font-medium">Trusted by 1M+ donors worldwide</span>
+              <span className="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse "></span>
+              <span className="text-xs sm:text-sm font-medium text-gray-600 ">Trusted by 1M+ donors worldwide</span>
             </motion.div>
 
             {/* Main Title */}
             <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-gray-900 font-bold leading-tight"
               variants={itemVariants}
             >
               Making a{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-500">
                 Difference
               </span>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r text-gray-900">
                 Together
               </span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p 
-              className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl"
+              className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-2xl"
               variants={itemVariants}
             >
               Join us in creating positive change. Every donation, every volunteer hour, 
@@ -167,14 +167,14 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg sm:rounded-xl flex items-center justify-center">
-                    <FaHeart className="text-white text-sm sm:text-lg" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-red-500 to-red-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+                    <FaHeart className="text-white text-sm sm:text-lg " />
                   </div>
                 </div>
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold  text-gray-900 mb-1">
                   ₹{counts.donations}+ Cr
                 </div>
-                <div className="text-xs sm:text-sm text-gray-300">Worth Donations</div>
+                <div className="text-xs sm:text-sm text-gray-600">Worth Donations</div>
               </motion.div>
 
               <motion.div 
@@ -183,14 +183,14 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-red-500 to-red-500 rounded-lg sm:rounded-xl flex items-center justify-center">
                     <FaUsers className="text-white text-sm sm:text-lg" />
                   </div>
                 </div>
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
                   {counts.transactions}K
                 </div>
-                <div className="text-xs sm:text-sm text-gray-300">Donor Transactions</div>
+                <div className="text-xs sm:text-sm text-gray-600">Donor Transactions</div>
               </motion.div>
 
               <motion.div 
@@ -199,14 +199,14 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-red-500 to-red-500 rounded-lg sm:rounded-xl flex items-center justify-center">
                     <FaGlobe className="text-white text-sm sm:text-lg" />
                   </div>
                 </div>
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
                   {counts.ngos}+
                 </div>
-                <div className="text-xs sm:text-sm text-gray-300">NGOs Impacted</div>
+                <div className="text-xs sm:text-sm text-gray-600">NGOs Impacted</div>
               </motion.div>
             </motion.div>
 
@@ -216,26 +216,26 @@ const Hero = () => {
               variants={itemVariants}
             >
               <motion.button
-                className="group relative px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl sm:rounded-2xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center space-x-2 overflow-hidden text-sm sm:text-base"
+                className="group relative px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-primary-500 to-primary-500 text-white font-semibold rounded-xl sm:rounded-2xl  transition-all duration-300 flex items-center justify-center space-x-2 overflow-hidden text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <span className="relative z-10 flex items-center space-x-2">
                   <FaHandHoldingHeart className="text-lg sm:text-xl" />
-                  <span>Donate Now</span>
+                  <span className=''>Donate Now</span>
                 </span>
-                <motion.div
+                {/* <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
+                /> */}
               </motion.button>
 
               <motion.button
-                className="group px-6 py-3 sm:px-8 sm:py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl sm:rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base"
+                className="group px-6 py-3 sm:px-8 sm:py-4  backdrop-blur-sm text-white font-semibold rounded-xl sm:rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Explore Campaigns</span>
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+                <span className='text-red-500'>Explore Campaigns</span>
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300 text-red-500" />
               </motion.button>
             </motion.div>
 
@@ -245,11 +245,11 @@ const Hero = () => {
               variants={itemVariants}
             >
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                 <span>100% Secure Donations</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                 <span>Tax Benefits Available</span>
               </div>
             </motion.div>
@@ -272,12 +272,12 @@ const Hero = () => {
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4 mx-auto"
+                    className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gradient-to-r from-red-500 to-red-500 rounded-full flex items-center justify-center mb-4 mx-auto"
                   >
                     <FaHeart className="text-white text-2xl sm:text-3xl lg:text-4xl" />
                   </motion.div>
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2">Hero Image</h3>
-                  <p className="text-gray-300 text-sm sm:text-base">Premium Visual Content</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Hero Image</h3>
+                  <p className="text-gray-600 text-sm sm:text-base">Premium Visual Content</p>
                 </div>
               </div>
 
@@ -289,7 +289,7 @@ const Hero = () => {
                 style={{ animationDelay: '1s' }}
               >
                 <div className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-red-500 to-red-500 rounded-lg sm:rounded-xl flex items-center justify-center">
                     <FaUsers className="text-white text-sm sm:text-lg lg:text-xl" />
                   </div>
                   <div>
@@ -306,7 +306,7 @@ const Hero = () => {
                 style={{ animationDelay: '2s' }}
               >
                 <div className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-red-500 to-red-500 rounded-lg sm:rounded-xl flex items-center justify-center">
                     <FaHeart className="text-white text-sm sm:text-lg lg:text-xl" />
                   </div>
                   <div>
@@ -317,13 +317,13 @@ const Hero = () => {
               </motion.div>
 
               {/* Play Button */}
-              <motion.button
+              {/* <motion.button
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 flex items-center justify-center hover:bg-white/30 transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <FaPlay className="text-white text-lg sm:text-xl lg:text-2xl ml-1" />
-              </motion.button>
+              </motion.button> */}
             </motion.div>
           </motion.div>
         </motion.div>
