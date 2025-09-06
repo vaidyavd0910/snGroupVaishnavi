@@ -126,11 +126,11 @@ const Home = () => {
             className="text-center mb-12 sm:mb-16"
           >
             <div className="flex items-center justify-center mb-4 mx-auto w-fit">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl flex items-center justify-center mr-4">
                 <FaCalendarAlt className="text-white text-xl" />
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">Events</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-500">Events</span>
               </h2>
             </div>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
@@ -152,11 +152,11 @@ const Home = () => {
             className="text-center mb-12 sm:mb-16"
           >
             <div className="flex items-center justify-center mb-4 mx-auto w-fit">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-500 rounded-2xl flex items-center justify-center mr-4">
                 <FaNewspaper className="text-white text-xl" />
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-700">Blogs</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-500">Blogs</span>
               </h2>
             </div>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
@@ -178,11 +178,11 @@ const Home = () => {
             className="text-center mb-12 sm:mb-16"
           >
             <div className="flex items-center justify-center mb-4 mx-auto w-fit">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mr-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl flex items-center justify-center mr-4">
                 <FaGraduationCap className="text-white text-xl" />
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-700">Programs</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Programs</span>
               </h2>
             </div>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
@@ -220,7 +220,7 @@ const Home = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-primary-600 to-secondary-600">
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#F2F2F2]">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -228,15 +228,15 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
               Ready to Make a Difference?
             </h2>
-            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-8 px-4">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8 px-4">
               Join thousands of donors and volunteers who are already creating positive change in communities around the world.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
-                className="px-6 py-3 sm:px-8 sm:py-4 bg-white text-primary-600 font-semibold rounded-xl sm:rounded-2xl hover:bg-gray-100 transition-all duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base"
+                className="px-6 py-3 sm:px-8 sm:py-4 bg-red-500 text-white font-semibold rounded-xl sm:rounded-2xl  transition-all duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -248,8 +248,8 @@ const Home = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaUsers className="text-lg sm:text-xl" />
-                <span>Become a Volunteer</span>
+                <FaUsers className="text-lg sm:text-xl text-red-500" />
+                <span className='text-red-500'>Become a Volunteer</span>
               </motion.button>
             </div>
           </motion.div>

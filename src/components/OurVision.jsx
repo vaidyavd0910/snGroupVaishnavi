@@ -19,34 +19,34 @@ const OurVision = () => {
       id: 1,
       text: "Equipping the next generation with knowledge and skills to not only survive but also thrive in a dynamic world, ensuring their long-term success and well-being.",
       icon: <FaBookOpen />,
-      color: "#3498db"
+      color: "#D14343"
     },
     {
       id: 2,
       text: "Enable the civil society across the world to engage proactively in the change process through the philosophy of civic driven change.",
       icon: <FaGlobeAmericas />,
-      color: "#2ecc71"
+      color: "#D14343"
     },
     {
       id: 3,
       text: "To create a world where every individual has access to the resources, education, and opportunities needed to thrive.",
       icon: <FaHandHoldingHeart />,
-      color: "#e74c3c"
+      color: "#D14343"
     },
     {
       id: 4,
       text: "Our mission is to empower underserved populations, protect the planet, and create lasting positive change.",
       icon: <FaUsers />,
-      color: "#f39c12"
+      color: "#D14343"
     }
   ];
 
   const focusAreas = [
-    { id: 1, name: "Education", icon: <FaGraduationCap />, color: "#3498db" },
-    { id: 2, name: "Healthcare", icon: <FaHeartbeat />, color: "#e74c3c" },
-    { id: 3, name: "Environmental", icon: <FaLeaf />, color: "#2ecc71" },
-    { id: 4, name: "Women's Empowerment", icon: <FaFemale />, color: "#9b59b6" },
-    { id: 5, name: "Animal Welfare", icon: <FaPaw />, color: "#f39c12" }
+    { id: 1, name: "Education", icon: <FaGraduationCap />, color: "#D14343" },
+    { id: 2, name: "Healthcare", icon: <FaHeartbeat />, color: "#D14343" },
+    { id: 3, name: "Environmental", icon: <FaLeaf />, color: "#D14343" },
+    { id: 4, name: "Women's Empowerment", icon: <FaFemale />, color: "#D14343" },
+    { id: 5, name: "Animal Welfare", icon: <FaPaw />, color: "#D14343" }
   ];
 
   const containerVariants = {
@@ -78,7 +78,7 @@ const OurVision = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <h1>Our Vision</h1>
+        <h1>Our <span className='text-primary-500'>Vision</span></h1>
         <div className="vision-underline"></div>
         <p className="vision-intro">
           We envision a world where compassion, equality, and sustainability drive positive change for all beings.
@@ -155,11 +155,11 @@ const OurVision = () => {
           </p>
           <div className="impact-stats">
             <div className="stat">
-              <span className="stat-number">10K+</span>
-              <span className="stat-label">Lives Impacted</span>
+              <span className="stat-number text-primary-500">10K+</span>
+              <span className="stat-label text-gray-900">Lives Impacted</span>
             </div>
             <div className="stat">
-              <span className="stat-number">50+</span>
+              <span className="stat-number ">50+</span>
               <span className="stat-label">Communities Served</span>
             </div>
             <div className="stat">

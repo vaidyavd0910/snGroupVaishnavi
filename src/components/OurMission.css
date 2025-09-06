@@ -18,7 +18,7 @@
 .mission-underline {
   width: 80px;
   height: 4px;
-  background: var(--primary-color);
+  background: #D14343;
   margin: 1rem auto;
   border-radius: 2px;
 }
@@ -70,7 +70,7 @@
   justify-content: center;
   font-size: 2.5rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  background: linear-gradient(135deg, #fff 60%, var(--icon-color, #eee) 100%);
+  background: "#D14343";
   position: relative;
   transition: box-shadow 0.3s, transform 0.2s;
 }
@@ -113,7 +113,7 @@
 .progress-bar-inner {
   height: 100%;
   border-radius: 8px;
-  background: linear-gradient(90deg, var(--bar-color, #3b82f6) 60%, #22c55e 100%);
+  background: linear-gradient(90deg, var(--bar-color, #3b82f6) 60%, #D14343 100%);
   box-shadow: 0 2px 8px rgba(60,60,100,0.10);
   animation: shimmer 2s infinite linear;
 }

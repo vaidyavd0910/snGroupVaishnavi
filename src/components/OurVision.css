@@ -20,7 +20,7 @@
 .vision-underline {
   width: 80px;
   height: 4px;
-  background: var(--primary-color);
+  background:#D14343;
   margin: 1rem auto;
   border-radius: 2px;
 }
@@ -89,7 +89,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: #D14343;
   border-radius: 2px;
 }
 
@@ -189,7 +189,7 @@
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: #D14343;
   margin-bottom: 0.5rem;
 }
 
@@ -237,21 +237,21 @@
 }
 
 .cta-button.primary {
-  background-color: var(--primary-color);
+  background-color: #D14343;
   color: white;
   box-shadow: 0 4px 15px rgba(var(--primary-color-rgb), 0.3);
 }
 
-.cta-button.primary:hover {
+/* .cta-button.primary:hover {
   background-color: var(--primary-color-dark);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.4);
-}
+} */
 
 .cta-button.secondary {
   background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  color: #D14343;
+  border: 2px solid #D14343;
 }
 
 .cta-button.secondary:hover {

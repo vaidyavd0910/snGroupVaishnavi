@@ -68,8 +68,8 @@ const AboutUs = () => {
     }
   };
 
-  const filteredGalleryImages = activeGalleryFilter === 'all' 
-    ? galleryImages 
+  const filteredGalleryImages = activeGalleryFilter === 'all'
+    ? galleryImages
     : galleryImages.filter(image => image.category === activeGalleryFilter);
 
   const getEventStatus = (event) => {
@@ -77,12 +77,12 @@ const AboutUs = () => {
     const eventDate = new Date(event.date);
     const eventStartTime = new Date(event.date);
     const eventEndTime = new Date(event.date);
-    
+
     if (event.startTime) {
       const [startHours, startMinutes] = event.startTime.split(':');
       eventStartTime.setHours(parseInt(startHours), parseInt(startMinutes), 0);
     }
-    
+
     if (event.endTime) {
       const [endHours, endMinutes] = event.endTime.split(':');
       eventEndTime.setHours(parseInt(endHours), parseInt(endMinutes), 0);
@@ -113,28 +113,28 @@ const AboutUs = () => {
       title: "Community Empowerment",
       description: "We believe in empowering communities to drive their own development and create sustainable change.",
       icon: <FaUsers className="w-8 h-8" />,
-      color: "from-blue-500 to-blue-600"
+      color: "from-primary-500 to-primary-500"
     },
     {
       id: 2,
       title: "Youth Engagement",
       description: "Mobilizing India's youth through volunteerism to contribute to social causes and develop leadership skills.",
       icon: <FaLightbulb className="w-8 h-8" />,
-      color: "from-yellow-500 to-orange-500"
+      color: "from-primary-500 to-primary-500"
     },
     {
       id: 3,
       title: "Compassionate Action",
       description: "Taking action with empathy and understanding to address the needs of vulnerable populations.",
       icon: <FaHandHoldingHeart className="w-8 h-8" />,
-      color: "from-pink-500 to-red-500"
+      color: "from-primary-500 to-primary-500"
     },
     {
       id: 4,
       title: "Global Perspective",
       description: "Working with a global mindset while focusing on local solutions to create meaningful impact.",
       icon: <FaGlobeAsia className="w-8 h-8" />,
-      color: "from-green-500 to-teal-500"
+      color: "from-primary-500 to-primary-500"
     }
   ];
 
@@ -152,28 +152,28 @@ const AboutUs = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary-50 to-secondary-50 overflow-hidden">
+      <section className="relative py-20 bg-[#F2F2F2] overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className=" mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              About <span className="text-primary-600">SN Trust</span>
+              About <span className="text-primary-500">SN Trust</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              We are India's most trusted and transparent crowdfunding platform, dedicated to creating 
+              We are India's most trusted and transparent crowdfunding platform, dedicated to creating
               meaningful social impact through community-driven initiatives and compassionate action.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link 
-                to="/mission" 
-                className="inline-flex items-center px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              <Link
+                to="/mission"
+                className="inline-flex items-center px-8 py-4 bg-primary-500 hover:text-white text-white font-semibold rounded-xl "
               >
                 Our Mission
                 <FaArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link 
-                to="/vision" 
-                className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl border-2 border-primary-500"
+              <Link
+                to="/vision"
+                className="inline-flex items-center px-8 py-4 bg-white text-primary-500 hover:text-primary-500 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl border-2 border-primary-500"
               >
                 Our Vision
                 <FaArrowRight className="ml-2 w-5 h-5" />
@@ -202,15 +202,15 @@ const AboutUs = () => {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">Upcoming Events</h3>
                   <p className="text-gray-600">Discover events that are coming soon</p>
                 </div>
-                <Link 
-                  to="/events?status=upcoming" 
+                <Link
+                  to="/events?status=upcoming"
                   className="text-primary-600 hover:text-primary-700 font-semibold flex items-center"
                 >
                   View All
                   <FaArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {getFilteredEvents('upcoming').map(event => (
                   <div
@@ -219,8 +219,8 @@ const AboutUs = () => {
                     onClick={() => navigate(`/events/${event._id}`)}
                   >
                     <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={event.images?.[0] || event.image || '/images/event-placeholder.jpg'} 
+                      <img
+                        src={event.images?.[0] || event.image || '/images/event-placeholder.jpg'}
                         alt={event.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
@@ -263,15 +263,15 @@ const AboutUs = () => {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">Ongoing Events</h3>
                   <p className="text-gray-600">Events happening right now</p>
                 </div>
-                <Link 
-                  to="/events?status=ongoing" 
+                <Link
+                  to="/events?status=ongoing"
                   className="text-primary-600 hover:text-primary-700 font-semibold flex items-center"
                 >
                   View All
                   <FaArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {getFilteredEvents('ongoing').map(event => (
                   <div
@@ -280,8 +280,8 @@ const AboutUs = () => {
                     onClick={() => navigate(`/events/${event._id}`)}
                   >
                     <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={event.images?.[0] || event.image || '/images/event-placeholder.jpg'} 
+                      <img
+                        src={event.images?.[0] || event.image || '/images/event-placeholder.jpg'}
                         alt={event.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
@@ -319,7 +319,7 @@ const AboutUs = () => {
       </section>
 
       {/* Volunteers Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-20 bg-[#F2F2F2]">
         <div className=" mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -327,38 +327,38 @@ const AboutUs = () => {
                 <h2 className="text-4xl font-bold text-gray-900 mb-4">Join Our Volunteer Community</h2>
                 <div className="w-24 h-1 bg-primary-500 rounded-full mb-6"></div>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Make a meaningful impact in your community by joining our volunteer program. 
+                  Make a meaningful impact in your community by joining our volunteer program.
                   We offer various opportunities to contribute your skills and time to causes that matter.
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">500+</div>
+                  <div className="text-3xl font-bold text-primary-500 mb-2">500+</div>
                   <div className="text-sm text-gray-600">Active Volunteers</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
+                  <div className="text-3xl font-bold text-primary-500 mb-2">50+</div>
                   <div className="text-sm text-gray-600">Projects Completed</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">10K+</div>
+                  <div className="text-3xl font-bold text-primary-500 mb-2">10K+</div>
                   <div className="text-sm text-gray-600">Hours Contributed</div>
                 </div>
               </div>
-              
-              <button 
-                className="inline-flex items-center px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors duration-200 shadow-lg hover:shadow-xl"
+
+              <button
+                className="inline-flex items-center px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-500 transition-colors duration-200 shadow-lg hover:shadow-xl"
                 onClick={() => navigate('/volunteer-join')}
               >
                 Become a Volunteer
                 <FaArrowRight className="ml-2 w-5 h-5" />
               </button>
             </div>
-            
+
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-soft p-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center mb-6">
                   <FaUsers className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Why Volunteer With Us?</h3>
@@ -394,36 +394,36 @@ const AboutUs = () => {
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Impact Gallery</h2>
               <div className="w-24 h-1 bg-primary-500 rounded-full mb-6"></div>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Explore our visual journey through impactful moments, community events, and the lives we've touched. 
+                Explore our visual journey through impactful moments, community events, and the lives we've touched.
                 Each image tells a story of hope, compassion, and positive change.
               </p>
-              <Link 
-                to="/gallery" 
-                className="inline-flex items-center px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              <Link
+                to="/gallery"
+                className="inline-flex items-center px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl"
               >
                 View Full Gallery
                 <FaImages className="ml-2 w-5 h-5" />
               </Link>
             </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              {filteredGalleryImages.slice(0, 4).map((image, index) => (
+
+            {/* Right Side Gallery Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4">
+              {filteredGalleryImages.slice(0, 4).map((image) => (
                 <div
                   key={image._id}
-                  className={`group cursor-pointer ${
-                    index === 0 ? 'col-span-2 row-span-2' : 'col-span-1'
-                  }`}
+                  className="group cursor-pointer"
                   onClick={() => navigate('/gallery')}
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-2">
-                    <img 
-                      src={image.image} 
+                  <div className="relative aspect-square overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <img
+                      src={image.image}
                       alt={image.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+                    {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-white font-semibold text-sm truncate">
+                        <h3 className="text-white font-semibold text-sm sm:text-base truncate">
                           {image.title}
                         </h3>
                       </div>
@@ -437,20 +437,20 @@ const AboutUs = () => {
       </section>
 
       {/* Our Pillars Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-20 bg-[#F2F2F2]">
         <div className=" mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Pillars</h2>
+            <h2 className="text-4xl font-bold text-primary-500 mb-4">Our Pillars</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our work is guided by four fundamental principles that shape everything we do
             </p>
             <div className="w-24 h-1 bg-primary-500 mx-auto mt-6 rounded-full"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {pillars.map((pillar) => (
-              <div 
-                key={pillar.id} 
+              <div
+                key={pillar.id}
                 className="bg-white rounded-2xl shadow-soft p-8 hover:shadow-medium transition-all duration-300 hover:-translate-y-2 text-center group"
               >
                 <div className={`w-16 h-16 bg-gradient-to-br ${pillar.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -467,24 +467,24 @@ const AboutUs = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
+      <section className="py-20 bg-gradient-to-br bg-white">
         <div className=" mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Join Our Journey</h2>
-          <p className="text-xl text-primary-100 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Be part of our mission to create lasting change. Whether through volunteering, 
+          <p className="text-xl text-gray-900 max-w-3xl mx-auto mb-8 leading-relaxed">
+            Be part of our mission to create lasting change. Whether through volunteering,
             donating, or spreading awareness, your contribution matters.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link 
-              to="/campaigns" 
-              className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl"
+            <Link
+              to="/campaigns"
+              className="inline-flex items-center px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               <FaHeart className="mr-2 w-5 h-5" />
               Donate Now
             </Link>
-            <Link 
-              to="/volunteer-join" 
-              className="inline-flex items-center px-8 py-4 bg-transparent text-white font-semibold rounded-xl hover:bg-white hover:text-primary-600 transition-colors duration-200 border-2 border-white"
+            <Link
+              to="/volunteer-join"
+              className="inline-flex items-center text-red-500 px-8 py-4 bg-transparent  font-semibold rounded-xl  hover:text-primary-500 transition-colors duration-200  "
             >
               Get Involved
               <FaArrowRight className="ml-2 w-5 h-5" />
