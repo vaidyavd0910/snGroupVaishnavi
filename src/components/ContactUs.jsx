@@ -59,6 +59,7 @@ const ContactUs = () => {
           <Loader text="Sending message..." />
         </div>
       )}
+      
       <motion.div 
         className="contact-header"
         initial={{ opacity: 0, y: -20 }}
@@ -133,16 +134,16 @@ const ContactUs = () => {
             <div className="social-media">
               <h3>Connect With Us</h3>
               <div className="social-icons">
-                <a href="#" className="social-icon facebook">
+                <a href="#" className="social-icon facebook" aria-label="Facebook">
                   <FaFacebookF />
                 </a>
-                <a href="#" className="social-icon instagram">
+                <a href="#" className="social-icon instagram" aria-label="Instagram">
                   <FaInstagram />
                 </a>
-                <a href="#" className="social-icon linkedin">
+                <a href="#" className="social-icon linkedin" aria-label="LinkedIn">
                   <FaLinkedinIn />
                 </a>
-                <a href="#" className="social-icon twitter">
+                <a href="#" className="social-icon twitter" aria-label="Twitter">
                   <FaTwitter />
                 </a>
               </div>
@@ -187,30 +188,32 @@ const ContactUs = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-form">
-                <div className="form-group">
-                  <label htmlFor="name">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your name"
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="email">Your Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your email"
-                  />
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name">Your Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="email">Your Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter your email"
+                    />
+                  </div>
                 </div>
                 
                 <div className="form-group">
@@ -239,8 +242,8 @@ const ContactUs = () => {
                   ></textarea>
                 </div>
                 
-                <button type="submit" className="submit-button">
-                  Send Message
+                <button type="submit" className="submit-button" disabled={loading}>
+                  {loading ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             )}
@@ -257,7 +260,7 @@ const ContactUs = () => {
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.1907243051236!2d76.0!3d19.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDQ4JzAwLjAiTiA3NsKwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
           width="100%" 
-          height="450" 
+          height="100%" 
           style={{ border: 0 }} 
           allowFullScreen="" 
           loading="lazy" 
@@ -269,4 +272,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs; 
+export default ContactUs;

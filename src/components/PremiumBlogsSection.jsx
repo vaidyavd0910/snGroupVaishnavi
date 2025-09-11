@@ -279,7 +279,7 @@ const PremiumBlogsSection = () => {
                       </span>
                       <Link
                         to={`/blog/${blog._id}`}
-                        className="inline-flex items-center space-x-2 text-primary-500 hover:text-primary-700 font-semibold transition-colors duration-200"
+                        className="inline-flex items-center space-x-2 text-primary-500 hover:text-primary-500 font-semibold transition-colors duration-200"
                       >
                         <span>Read More</span>
                         <FaArrowRight className="w-4 h-4" />

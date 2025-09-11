@@ -381,8 +381,8 @@ const Emergency = () => {
       <div className="emergency-header">
         <div className="emergency-hero">
           <FaShieldAlt className="emergency-icon" />
-          <h1>SN Arya Mitra</h1>
-          <p>Connect with verified emergency responders and volunteers ready to help in times of need.</p>
+          <h1 className='text-gray-900'>SN Arya Mitra</h1>
+          <p className='text-gray-600'>Connect with verified emergency responders and volunteers ready to help in times of need.</p>
         </div>
         
         <div className="emergency-actions">

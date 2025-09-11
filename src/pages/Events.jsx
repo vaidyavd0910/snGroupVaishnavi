@@ -108,13 +108,13 @@ const Events = () => {
     const status = getEventStatus(event);
     switch (status) {
       case 'upcoming':
-        return '#3b82f6';
+        return '#D14343';
       case 'ongoing':
-        return '#10b981';
+        return '#D14343';
       case 'past':
-        return '#6b7280';
+        return '#D14343';
       default:
-        return '#6b7280';
+        return '#D14343';
     }
   };
 
@@ -250,7 +250,7 @@ const Events = () => {
 
       <section className="cta-section">
         <div className="cta-content">
-          <h2>Want to support our programs?</h2>
+          <h2 className="text-gray-900">Want to support our programs?</h2>
           <p>Your contribution can make a significant difference in the lives of those we serve.</p>
           <div className="cta-buttons">
             <button className="btn btn-primary" onClick={() => navigate('/campaigns')}>Donate Now</button>

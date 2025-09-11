@@ -12,7 +12,7 @@ const GallerySection = () => {
       title: 'Healthcare Access',
       value: '50,000+',
       description: 'People received medical care',
-      color: 'from-red-500 to-pink-500'
+      color: 'from-primary-500 to-primary-500'
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const GallerySection = () => {
       title: 'Education Support',
       value: '25,000+',
       description: 'Students supported',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-primary-500 to-primary-500'
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ const GallerySection = () => {
       title: 'Community Development',
       value: '100+',
       description: 'Villages transformed',
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-primary-500 to-primary-500'
     },
     {
       id: 4,
@@ -36,7 +36,7 @@ const GallerySection = () => {
       title: 'Environmental Impact',
       value: '10,000+',
       description: 'Trees planted',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-primary-500 to-primary-500'
     },
     {
       id: 5,
@@ -44,7 +44,7 @@ const GallerySection = () => {
       title: 'Disaster Relief',
       value: '15,000+',
       description: 'Families helped',
-      color: 'from-orange-500 to-red-500'
+      color: 'from-primary-500 to-primary-500'
     },
     {
       id: 6,
@@ -52,7 +52,7 @@ const GallerySection = () => {
       title: 'Volunteer Hours',
       value: '500K+',
       description: 'Hours of service',
-      color: 'from-yellow-500 to-orange-500'
+      color: 'from-primary-500 to-primary-500'
     }
   ];
 
@@ -103,7 +103,7 @@ const GallerySection = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600">Impact</span> Stories
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-500">Impact</span> Stories
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Real stories of transformation and positive change from communities across India
@@ -169,13 +169,13 @@ const GallerySection = () => {
                 className="text-center max-w-4xl mx-auto"
               >
                 <div className="mb-6 sm:mb-8">
-                  <FaQuoteLeft className="text-3xl sm:text-4xl text-primary-500 mx-auto mb-4 sm:mb-6 opacity-50" />
+                  <FaQuoteLeft className="text-3xl sm:text-4xl text-primary-500 mx-auto mb-4 sm:mb-6 opacity-80" />
                   <p className="text-lg sm:text-xl lg:text-2xl text-gray-700 leading-relaxed mb-6 sm:mb-8 italic px-4">
                     "{testimonials[activeTestimonial].content}"
                   </p>
                   
                   <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-primary-500 to-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl">
                       {testimonials[activeTestimonial].avatar}
                     </div>
                     <div className="text-center sm:text-left">
@@ -224,7 +224,7 @@ const GallerySection = () => {
           viewport={{ once: true }}
         >
           <motion.button 
-            className="inline-flex items-center px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold rounded-xl sm:rounded-2xl hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl group text-sm sm:text-base"
+            className="inline-flex items-center px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-primary-500 to-primary-500 text-white font-semibold rounded-xl sm:rounded-2xl hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl group text-sm sm:text-base"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
