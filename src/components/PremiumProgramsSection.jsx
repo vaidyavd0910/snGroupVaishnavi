@@ -311,7 +311,7 @@ const PremiumProgramsSection = () => {
           <Slider {...sliderSettings}>
             {filteredPrograms.map((program, index) => (
               <div key={program?._id || index} className="px-3">
-                <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2">
+                <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2 h-[520px] flex flex-col group">
                   {/* Program Image */}
                   <div className="relative h-48 overflow-hidden">
                     <img
@@ -339,7 +339,7 @@ const PremiumProgramsSection = () => {
                   </div>
 
                   {/* Program Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex-1 flex flex-col">
                     <div className="flex items-center justify-between mb-3">
                       <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-xs font-semibold">
                         {program?.category}
@@ -350,8 +350,8 @@ const PremiumProgramsSection = () => {
                       </div>
                     </div>
 
-                    <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">{program?.title}</h4>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{program?.description}</p>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:line-clamp-none group-hover:whitespace-normal" title={program?.title}>{program?.title}</h4>
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-2 group-hover:line-clamp-none group-hover:whitespace-normal flex-1" title={program?.description}>{program?.description}</p>
 
                     {/* Progress Bar */}
                     <div className="mb-4">

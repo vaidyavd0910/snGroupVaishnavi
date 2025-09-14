@@ -12,7 +12,7 @@ import { IoIosMenu } from "react-icons/io";
 const Logo = () => (
   <Link to="/" className="flex items-center space-x-3 group">
     <img src={logo} alt="SnTrust" className="w-12 h-12 sm:w-14 sm:h-14 transition-transform duration-300 group-hover:scale-110" />
-    <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+    <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-500 to-primary-500 bg-clip-text text-transparent">
       SN Trust
     </span>
   </Link>
@@ -154,7 +154,7 @@ const Navbar = () => {
   useEffect(() => { document.body.style.overflow = isMenuOpen ? 'hidden' : ''; }, [isMenuOpen]);
 
   return (
-    <header className={`bg-white text-[#101840] sticky top-0 z-50 border-b border-gray-200 transition-shadow duration-300 ${scrolled ? 'shadow-sm' : ''}`}>
+    <header className={`bg-white text-[#D14343] sticky top-0 z-50 border-b border-gray-200 transition-shadow duration-300 ${scrolled ? 'shadow-sm' : ''}`}>
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Logo />
@@ -185,7 +185,7 @@ const Navbar = () => {
                           <Link
                             key={sub.name}
                             to={sub.path}
-                            className={`block px-4 py-2 text-sm ${isActive(sub.path) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                            className={`navbar-link block px-4 py-2 text-sm transition-all duration-300 ${isActive(sub.path) ? 'active' : ''}`}
                             onClick={() => setActiveSubmenu(null)}
                           >
                             {sub.name}
@@ -199,7 +199,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`px-4 py-2 rounded-xl font-medium ${isActive(link.path) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                  className={`navbar-link px-4 py-2 rounded-xl font-medium transition-all duration-300 ${isActive(link.path) ? 'active' : ''}`}
                   onClick={() => setActiveSubmenu(null)} // <-- close any submenu
                 >
                   {link.name}
@@ -272,7 +272,7 @@ const Navbar = () => {
                   link.submenu ? (
                     <div key={link.name} className="space-y-1">
                       <button
-                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium ${isSubmenuActive(link.submenu) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 ${isSubmenuActive(link.submenu) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
                         onClick={() => toggleSubmenu(link.name)}
                         aria-expanded={activeSubmenu === link.name}
                       >
@@ -292,7 +292,7 @@ const Navbar = () => {
                               <Link
                                 key={sub.name}
                                 to={sub.path}
-                                className={`block px-4 py-2 rounded-lg ${isActive(sub.path) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                                className={`navbar-link block px-4 py-2 rounded-lg transition-all duration-300 ${isActive(sub.path) ? 'active' : ''}`}
                                 onClick={() => { setIsMenuOpen(false); setActiveSubmenu(null); }}
                               >
                                 {sub.name}
@@ -306,7 +306,7 @@ const Navbar = () => {
                     <Link
                       key={link.name}
                       to={link.path}
-                      className={`block px-4 py-3 rounded-xl font-medium ${isActive(link.path) ? 'text-[#D14343]' : 'text-[#101840] hover:text-[#D14343]'}`}
+                      className={`navbar-link block px-4 py-3 rounded-xl font-medium transition-all duration-300 ${isActive(link.path) ? 'active' : ''}`}
                       onClick={() => { setIsMenuOpen(false); setActiveSubmenu(null); }}
                     >
                       {link.name}

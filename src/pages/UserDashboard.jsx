@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
 import DonationReceipt from '../components/common/DonationReceipt';
 import * as htmlToImage from 'html-to-image';
-import Loader from '../components/Loader';
 import api from '../utils/api';
+import PageLoader from '../components/PageLoader';
+import usePageLoader from '../hooks/usePageLoader';
 
 const UserDashboard = () => {
   const { currentUser } = useAuth();
@@ -20,6 +21,7 @@ const UserDashboard = () => {
   const [receiptData, setReceiptData] = useState(null);
   const [downloading, setDownloading] = useState(false);
   const [downloadPaymentId, setDownloadPaymentId] = useState(null);
+  const isPageLoading = usePageLoader();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,15 +88,18 @@ const UserDashboard = () => {
     }
   }, [downloading, receiptData, downloadPaymentId]);
 
-  if (loading) return <div className="user-dashboard-loading">Loading...</div>;
+  if (isPageLoading) {
+    return <PageLoader subtitle="Loading dashboard..." />;
+  }
+
   if (error) return <div className="user-dashboard-error">{error}</div>;
 
   return (
     <div className="user-dashboard-container">
-      {/* Loader overlay for receipt download */}
+      {/* Loading overlay for receipt download */}
       {downloading && (
         <div className="dashboard-loader-overlay">
-          <Loader text="Generating receipt..." />
+          <div className="loading-text">Generating receipt...</div>
         </div>
       )}
       <div className="user-dashboard-header">

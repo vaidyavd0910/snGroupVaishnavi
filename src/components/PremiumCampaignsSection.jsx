@@ -284,7 +284,7 @@ const PremiumCampaignsSection = () => {
           <Slider {...sliderSettings}>
             {filteredCampaigns.map((campaign, index) => (
               <div key={campaign?._id || index} className="px-3">
-                <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2">
+                <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2 h-[520px] flex flex-col group">
                   {/* Campaign Image */}
                   <div className="relative h-48 overflow-hidden">
                     <img
@@ -314,9 +314,9 @@ const PremiumCampaignsSection = () => {
                   </div>
 
                   {/* Campaign Content */}
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">{campaign?.title}</h4>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{campaign?.description}</p>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:line-clamp-none group-hover:whitespace-normal" title={campaign?.title}>{campaign?.title}</h4>
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-2 group-hover:line-clamp-none group-hover:whitespace-normal flex-1" title={campaign?.description}>{campaign?.description}</p>
 
                     {/* Progress Bar */}
                     <div className="mb-4">

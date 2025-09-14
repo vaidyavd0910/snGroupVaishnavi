@@ -151,6 +151,24 @@ a:hover {
   color: var(--color-primary-700);
 }
 
+/* Navbar specific styles to override default link colors */
+.navbar-link {
+  color: #101840 !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #D14343 !important;
+}
+
+.navbar-link.active {
+  color: #D14343 !important;
+}
+
+.navbar-link.active:hover {
+  color: #D14343 !important;
+}
+
 /* Utility Classes */
 .btn {
   display: inline-flex;

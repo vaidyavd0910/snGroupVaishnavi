@@ -270,7 +270,7 @@ const PremiumEventsSection = () => {
         <Slider {...sliderSettings}>
           {filteredEvents.map((event) => (
             <div key={event._id} className="px-3">
-              <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2">
+              <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2 h-[520px] flex flex-col group">
                 <div className="relative h-48 overflow-hidden">
                   <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
                   <div className="absolute top-4 right-4">
@@ -285,7 +285,7 @@ const PremiumEventsSection = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
                     <span className={`px-2 py-1 rounded-full text-xs font-semibold ${event.category === 'online' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'
                       }`}>
@@ -294,20 +294,8 @@ const PremiumEventsSection = () => {
                     </span>
                     <span className="text-lg font-bold text-primary-500">{event.price}</span>
                   </div>
-                  {/* <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">{event.title}</h4>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.description}</p> */}
-                  <h4
-                    className="text-xl font-bold text-gray-900 mb-3 line-clamp-2"
-                    style={{ lineHeight: '1.2rem', maxHeight: '2.4rem', overflow: 'hidden' }}
-                  >
-                    {event.title}
-                  </h4>
-                  <p
-                    className="text-gray-600 text-sm mb-4 line-clamp-3"
-                    style={{ lineHeight: '1rem', maxHeight: '3rem', overflow: 'hidden' }}
-                  >
-                    {event.description}
-                  </p>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:line-clamp-none group-hover:whitespace-normal" title={event.title}>{event.title}</h4>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2 group-hover:line-clamp-none group-hover:whitespace-normal flex-1" title={event.description}>{event.description}</p>
                   <div className="space-y-2 text-sm text-gray-600 mb-6">
                     <div className="flex items-center space-x-2">
                       <FaClock className="text-primary-500 w-4 h-4" />

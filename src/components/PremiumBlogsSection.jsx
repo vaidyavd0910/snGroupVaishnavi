@@ -228,7 +228,7 @@ const PremiumBlogsSection = () => {
           <Slider {...sliderSettings}>
             {filteredBlogs.map((blog) => (
               <div key={blog._id} className="px-3">
-                <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2">
+                <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2 h-[520px] flex flex-col group">
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={blog.image}
@@ -248,7 +248,7 @@ const PremiumBlogsSection = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 flex-1 flex flex-col">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center space-x-2 text-sm text-gray-600">
                         <FaClock className="w-4 h-4 text-primary-500" />
@@ -259,8 +259,8 @@ const PremiumBlogsSection = () => {
                         <span>{blog.author}</span>
                       </div>
                     </div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">{blog.title}</h4>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">{blog.excerpt}</p>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:line-clamp-none group-hover:whitespace-normal" title={blog.title}>{blog.title}</h4>
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 group-hover:line-clamp-none group-hover:whitespace-normal flex-1" title={blog.excerpt}>{blog.excerpt}</p>
                     <div className="flex flex-wrap gap-2 mb-6">
                       {blog.tags?.slice(0, 2).map((tag, idx) => (
                         <span key={idx} className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">

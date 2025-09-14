@@ -1,3 +1,45 @@
+/* Mission Page Header */
+.mission-page-header {
+  background-color: #F2F2F2;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.mission-header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mission-page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827; /* text-gray-900 */
+}
+
+.mission-page-header p {
+  font-size: 1.2rem;
+  color: #6B7280; /* text-gray-500 */
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .mission-page-header {
+    padding: 4rem 1.5rem;
+  }
+  
+  .mission-page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .mission-page-header p {
+    font-size: 1.1rem;
+  }
+}
+
 .our-mission-container {
   max-width: 1200px;
   margin: 0 auto;

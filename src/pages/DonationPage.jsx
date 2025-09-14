@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Layout from '../components/Layout';
 import Button from '../components/common/Button';
 import ShareButton from '../components/common/ShareButton';
+import PageLoader from '../components/PageLoader';
+import usePageLoader from '../hooks/usePageLoader';
 import './DonationPage.css';
 
 const loadRazorpayScript = () => {
@@ -22,6 +24,7 @@ const DonationPage = () => {
   const queryParams = new URLSearchParams(location.search);
   const preselectedAmount = queryParams.get('amount');
   const campaignId = queryParams.get('campaign');
+  const isPageLoading = usePageLoader();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -251,7 +254,10 @@ const DonationPage = () => {
 
   return (
     <Layout title="Make a Donation | Donation Platform">
-      <div className="donation-page">
+      {isPageLoading ? (
+        <PageLoader subtitle="Loading donation form..." />
+      ) : (
+        <div className="donation-page">
         <div className="donation-container">
           <div className="donation-header">
             <h1 className="donation-title">Make a Donation</h1>
@@ -690,6 +696,7 @@ const DonationPage = () => {
           </div>
         </div>
       </div>
+      )}
     </Layout>
   );
 };
