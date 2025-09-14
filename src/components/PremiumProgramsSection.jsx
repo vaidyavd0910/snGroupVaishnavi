@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
 import { FaGraduationCap, FaSearch, FaFilter, FaArrowRight, FaClock, FaUsers, FaStar, FaCalendarAlt } from 'react-icons/fa';
 import api from '../utils/api';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const PremiumProgramsSection = () => {
   const [programs, setPrograms] = useState([]);
@@ -196,24 +198,6 @@ const PremiumProgramsSection = () => {
     return Math.round(((participants || 0) / (maxParticipants || 1)) * 100);
   };
 
-  // ✅ Slider settings
-  const sliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: Math.min(4, filteredPrograms.length || 1), // prevent issue when programs < 4
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    arrows: true,
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: Math.min(3, filteredPrograms.length || 1) } },
-      { breakpoint: 1024, settings: { slidesToShow: Math.min(2, filteredPrograms.length || 1) } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
-    ]
-  };
-
   return (
     <div className="w-full">
       {/* Header */}
@@ -308,9 +292,21 @@ const PremiumProgramsSection = () => {
         </div>
       ) : filteredPrograms.length > 0 ? (
         <div className="w-full">
-          <Slider {...sliderSettings}>
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            spaceBetween={20}
+            navigation
+            breakpoints={{
+              320: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 },
+            }}
+          >
             {filteredPrograms.map((program, index) => (
-              <div key={program?._id || index} className="px-3">
+              <SwiperSlide key={program?._id || index}>
                 <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2 h-[520px] flex flex-col group">
                   {/* Program Image */}
                   <div className="relative h-48 overflow-hidden">
@@ -393,9 +389,9 @@ const PremiumProgramsSection = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </Slider>
+          </Swiper>
         </div>
       ) : (
         /* Empty State */

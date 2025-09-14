@@ -248,8 +248,10 @@ const Home = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaUsers className="text-lg sm:text-xl text-red-500" />
-                <span className='text-red-500'>Become a Volunteer</span>
+                <Link to="/volunteer-join" className="flex items-center gap-2">
+                  <FaUsers className="text-lg sm:text-xl text-red-500" />
+                  <span className='text-red-500' >Become a Volunteer</span>
+                </Link>
               </motion.button>
             </div>
           </motion.div>

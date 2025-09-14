@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
 import { FaHandHoldingHeart, FaSearch, FaFilter, FaArrowRight, FaUsers, FaTarget, FaCalendarAlt, FaHeart } from 'react-icons/fa';
 import api from '../utils/api';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const PremiumCampaignsSection = () => {
   const [campaigns, setCampaigns] = useState([]);
@@ -184,24 +186,6 @@ const PremiumCampaignsSection = () => {
     }).format(amount || 0);
   };
 
-  // ✅ Slider settings
-  const sliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: Math.min(4, filteredCampaigns.length || 1), // prevent issue when campaigns < 4
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    arrows: true,
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: Math.min(3, filteredCampaigns.length || 1) } },
-      { breakpoint: 1024, settings: { slidesToShow: Math.min(2, filteredCampaigns.length || 1) } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
-    ]
-  };
-
   return (
     <div className="w-full">
       {/* Header */}
@@ -281,9 +265,21 @@ const PremiumCampaignsSection = () => {
         </div>
       ) : filteredCampaigns.length > 0 ? (
         <div className="w-full">
-          <Slider {...sliderSettings}>
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            spaceBetween={20}
+            navigation
+            breakpoints={{
+              320: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 },
+            }}
+          >
             {filteredCampaigns.map((campaign, index) => (
-              <div key={campaign?._id || index} className="px-3">
+              <SwiperSlide key={campaign?._id || index}>
                 <div className="bg-white rounded-2xl shadow-soft overflow-hidden hover:shadow-medium transition-all duration-300 hover:-translate-y-2 h-[520px] flex flex-col group">
                   {/* Campaign Image */}
                   <div className="relative h-48 overflow-hidden">
@@ -377,9 +373,9 @@ const PremiumCampaignsSection = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </Slider>
+          </Swiper>
         </div>
       ) : (
         /* Empty State */
