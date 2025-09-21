@@ -15,9 +15,9 @@ const Hero = () => {
   useEffect(() => {
     const animateNumbers = () => {
       const targets = {
-        donations: 300,
-        transactions: 1500,
-        ngos: 1400,
+        donations: 10,
+        transactions: 1,
+        ngos: 1200,
         volunteers: 50,
         raised: 10
       };
@@ -131,6 +131,14 @@ const Hero = () => {
               <span className="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse "></span>
               <span className="text-xs sm:text-sm font-medium text-gray-600 ">Trusted by 1M+ donors worldwide</span>
             </motion.div>
+            <motion.div 
+              className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
+              variants={itemVariants}
+            >
+              <span className="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse "></span>
+              <span className="text-xs sm:text-sm font-medium text-gray-600 ">Opreted By: Manasparshi Aashas Sewa Sanstha</span>
+            </motion.div>
+
 
             {/* Main Title */}
             <motion.h1 
@@ -172,7 +180,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="text-xl sm:text-2xl lg:text-3xl font-bold  text-gray-900 mb-1">
-                  ₹{counts.donations}+ Cr
+                  ₹{counts.donations}+ Lakh
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600">Worth Donations</div>
               </motion.div>

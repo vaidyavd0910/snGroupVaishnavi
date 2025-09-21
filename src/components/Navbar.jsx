@@ -12,9 +12,9 @@ import { IoIosMenu } from "react-icons/io";
 const Logo = () => (
   <Link to="/" className="flex items-center space-x-3 group">
     <img src={logo} alt="SnTrust" className="w-12 h-12 sm:w-14 sm:h-14 transition-transform duration-300 group-hover:scale-110" />
-    <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-500 to-primary-500 bg-clip-text text-transparent">
+    {/* <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-500 to-primary-500 bg-clip-text text-transparent">
       SN Trust
-    </span>
+    </span> */}
   </Link>
 );
 

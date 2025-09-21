@@ -26,7 +26,7 @@ const Home = () => {
 
   const stats = [
     { icon: FaUsers, value: '50K+', label: 'Active Volunteers', color: 'from-primary-500 to-primary-500' },
-    { icon: FaGlobe, value: '1400+', label: 'NGOs Impacted', color: 'from-primary-500 to-primary-500' },
+    { icon: FaGlobe, value: '1200+', label: 'NGOs Impacted', color: 'from-primary-500 to-primary-500' },
     { icon: FaStar, value: '4.9', label: 'Trust Score', color: 'from-primary-500 to-primary-500' },
     { icon: FaHandHoldingHeart, value: '₹300Cr+', label: 'Total Impact', color: 'from-primary-500 to-primary-500' }
   ];

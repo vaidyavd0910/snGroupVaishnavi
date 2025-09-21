@@ -26,15 +26,15 @@ const Footer = () => {
             {/* Stats (kept from original, placed after socials) */}
             <div className="mt-6 grid grid-cols-3 gap-4 max-w-md">
               <div className="text-center">
-                <div className="text-xl md:text-2xl font-bold text-primary-400">₹300+ Cr</div>
+                <div className="text-xl md:text-2xl font-bold text-primary-400">₹10 Lakh+ </div>
                 <div className="text-xs md:text-sm text-slate-400">Worth Donations</div>
               </div>
               <div className="text-center">
-                <div className="text-xl md:text-2xl font-bold text-primary-400">15 Lakhs</div>
+                <div className="text-xl md:text-2xl font-bold text-primary-400">1000+</div>
                 <div className="text-xs md:text-sm text-slate-400">Donor Transactions</div>
               </div>
               <div className="text-center">
-                <div className="text-xl md:text-2xl font-bold text-primary-400">1400+</div>
+                <div className="text-xl md:text-2xl font-bold text-primary-400">1200+</div>
                 <div className="text-xs md:text-sm text-slate-400">NGOs Impacted</div>
               </div>
             </div>
@@ -81,19 +81,19 @@ const Footer = () => {
               </div>
               <div className="flex items-center justify-start gap-3">
                 <FaPhone className="h-4 w-4 text-primary-400 flex-shrink-0" />
-                <a href="tel:+918045685000" className="hover:text-white transition-colors">+91 8045685000</a>
+                <a href="tel:+918045685000" className="hover:text-white transition-colors">+91 757070899</a>
               </div>
               <div className="flex items-center justify-start gap-3">
                 <FaEnvelope className="h-4 w-4 text-primary-400 flex-shrink-0" />
-                <a href="mailto:info@sntrust.com" className="hover:text-white transition-colors">info@sntrust.com</a>
+                <a href="mailto:info@sntrust.com" className="hover:text-white transition-colors">sngroupfoundationoffice@gmail.com</a>
               </div>
             </div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-3">Find Us On</h4>
             <div className="flex items-center justify-start gap-3">
-              <a href="#" aria-label="Facebook" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
+              <a href="https://www.facebook.com/share/17RycVv5j2/" aria-label="Facebook" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
                 <FaFacebook className="h-4 w-4 text-slate-200" />
               </a>
-              <a href="#" aria-label="Instagram" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
+              <a href="https://www.instagram.com/sngroupfoundation?igsh=bTltYXo2anQ0dXg0" aria-label="Instagram" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
                 <FaInstagram className="h-4 w-4 text-slate-200" />
               </a>
               <a href="#" aria-label="Twitter" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
@@ -102,7 +102,7 @@ const Footer = () => {
               <a href="#" aria-label="YouTube" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
                 <FaYoutube className="h-4 w-4 text-slate-200" />
               </a>
-              <a href="#" aria-label="LinkedIn" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
+              <a href="https://www.linkedin.com/company/mansparshi-aashas-sewa-sanstha/" aria-label="LinkedIn" className="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 flex items-center justify-center transition-colors">
                 <FaLinkedin className="h-4 w-4 text-slate-200" />
               </a>
             </div>

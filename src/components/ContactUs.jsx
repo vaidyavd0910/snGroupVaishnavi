@@ -101,7 +101,7 @@ const ContactUs = () => {
                 </div>
                 <div className="contact-text">
                   <h3>Phone</h3>
-                  <p><a href="tel:7058257708">7058257708</a></p>
+                  <p><a href="tel:7058257708">757070899</a></p>
                 </div>
               </div>
               
@@ -134,13 +134,13 @@ const ContactUs = () => {
             <div className="social-media">
               <h3>Connect With Us</h3>
               <div className="social-icons">
-                <a href="#" className="social-icon facebook" aria-label="Facebook">
+                <a href="https://www.facebook.com/share/17RycVv5j2/" className="social-icon facebook" aria-label="Facebook">
                   <FaFacebookF />
                 </a>
-                <a href="#" className="social-icon instagram" aria-label="Instagram">
+                <a href="https://www.instagram.com/sngroupfoundation?igsh=bTltYXo2anQ0dXg0" className="social-icon instagram" aria-label="Instagram">
                   <FaInstagram />
                 </a>
-                <a href="#" className="social-icon linkedin" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/mansparshi-aashas-sewa-sanstha/" className="social-icon linkedin" aria-label="LinkedIn">
                   <FaLinkedinIn />
                 </a>
                 <a href="#" className="social-icon twitter" aria-label="Twitter">
