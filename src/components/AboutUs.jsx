@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaHandHoldingHeart, FaUsers, FaLightbulb, FaGlobeAsia, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaArrowRight, FaImages, FaHeart } from 'react-icons/fa';
 import api from '../utils/api';
 import { format } from 'date-fns';
+import PageLoader from './PageLoader';
+import usePageLoader from '../hooks/usePageLoader';
 
 const AboutUs = () => {
   const [carouselImages, setCarouselImages] = useState([]);
@@ -11,6 +13,7 @@ const AboutUs = () => {
   const [galleryImages, setGalleryImages] = useState([]);
   const [activeGalleryFilter, setActiveGalleryFilter] = useState('all');
   const navigate = useNavigate();
+  const isPageLoading = usePageLoader();
 
   useEffect(() => {
     fetchCarouselImages();
@@ -138,15 +141,8 @@ const AboutUs = () => {
     }
   ];
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary-500 mx-auto mb-4"></div>
-          <p className="text-gray-600 font-medium">Loading...</p>
-        </div>
-      </div>
-    );
+  if (isPageLoading) {
+    return <PageLoader subtitle="Loading our story..." />;
   }
 
   return (

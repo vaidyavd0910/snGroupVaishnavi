@@ -4,12 +4,15 @@ import axios from 'axios';
 import './UserDashboard.css';
 import ShareButton from '../components/common/ShareButton';
 import api from '../utils/api';
+import PageLoader from '../components/PageLoader';
+import usePageLoader from '../hooks/usePageLoader';
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const isPageLoading = usePageLoader();
 
   useEffect(() => {
     const fetchCampaigns = async () => {
@@ -25,25 +28,10 @@ const Campaigns = () => {
     fetchCampaigns();
   }, []);
 
-  if (loading) return (
-    <div className="user-dashboard-container">
-      <div className="user-dashboard-header">
-        <h1>All Campaigns</h1>
-      </div>
-      <div className="campaigns-shimmer-list">
-        {[1,2,3,4].map(i => (
-          <div className="campaign-shimmer-card" key={i}>
-            <div className="campaign-shimmer-img shimmer" />
-            <div className="campaign-shimmer-line full shimmer" />
-            <div className="campaign-shimmer-line medium shimmer" />
-            <div className="campaign-shimmer-line short shimmer" />
-            <div className="campaign-shimmer-progress shimmer" />
-            <div className="campaign-shimmer-line short shimmer" style={{height:'36px', marginTop:'1.2rem'}} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  if (isPageLoading) {
+    return <PageLoader subtitle="Loading campaigns..." />;
+  }
+
   if (error) return <div className="user-dashboard-error">{error}</div>;
 
   return (

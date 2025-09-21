@@ -1,3 +1,45 @@
+/* Contact Page Header */
+.contact-page-header {
+  background-color: #F2F2F2;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.contact-header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827; /* text-gray-900 */
+}
+
+.contact-page-header p {
+  font-size: 1.2rem;
+  color: #6B7280; /* text-gray-500 */
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .contact-page-header {
+    padding: 4rem 1.5rem;
+  }
+  
+  .contact-page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .contact-page-header p {
+    font-size: 1.1rem;
+  }
+}
+
 /* Contact Us Container */
 .contact-us-container {
   max-width: 1400px;

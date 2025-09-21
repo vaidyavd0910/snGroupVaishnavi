@@ -3,11 +3,12 @@ import { motion } from "framer-motion";
 import { format } from "date-fns";
 import "./PageStyles.css";
 import axios from "axios";
-import Loader from "../components/Loader";
 import { useNavigate, useLocation } from "react-router-dom";
 import ImageCarousel from "../components/common/ImageCarousel";
 import ShareButton from "../components/common/ShareButton";
 import api from "../utils/api";
+import PageLoader from "../components/PageLoader";
+import usePageLoader from "../hooks/usePageLoader";
 
 const Events = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const Events = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const isPageLoading = usePageLoader();
   
   useEffect(() => {
     fetchEvents();
@@ -118,6 +120,10 @@ const Events = () => {
     }
   };
 
+  if (isPageLoading) {
+    return <PageLoader subtitle="Loading events..." />;
+  }
+
   return (
     <div className="page-container">
       <section className="hero-section">
@@ -164,9 +170,7 @@ const Events = () => {
         </div>
 
         <div className="events-container">
-          {loading ? (
-            <Loader text="Loading events..." />
-          ) : error ? (
+          {error ? (
             <div className="error-message">{error}</div>
           ) : getFilteredEvents().length > 0 ? (
             getFilteredEvents().map(event => (

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 import "./PageStyles.css";
-import Loader from "../components/Loader";
 import ImageCarousel from "../components/common/ImageCarousel";
 import ShareButton from "../components/common/ShareButton";
+import PageLoader from "../components/PageLoader";
+import usePageLoader from "../hooks/usePageLoader";
 
 const Programs = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -12,6 +13,7 @@ const Programs = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const isPageLoading = usePageLoader();
     
   useEffect(() => {
     fetchPrograms();
@@ -45,12 +47,8 @@ const Programs = () => {
     ? programs 
     : programs.filter(program => program.category === activeFilter);
 
-  if (loading) {
-    return (
-      <div className="page-container">
-        <Loader text="Loading programs..." />
-      </div>
-    );
+  if (isPageLoading) {
+    return <PageLoader subtitle="Loading programs..." />;
   }
 
   if (error) {

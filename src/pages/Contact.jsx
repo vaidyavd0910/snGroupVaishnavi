@@ -1,6 +1,14 @@
 import React from 'react';
+import PageLoader from '../components/PageLoader';
+import usePageLoader from '../hooks/usePageLoader';
 
 const Contact = () => {
+  const isLoading = usePageLoader();
+
+  if (isLoading) {
+    return <PageLoader subtitle="Loading contact information..." />;
+  }
+
   return (
     <div className="contact-container">
       <h1>Contact Us</h1>

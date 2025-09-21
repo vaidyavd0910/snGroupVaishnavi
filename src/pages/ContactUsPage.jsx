@@ -1,15 +1,15 @@
 import React from 'react';
 import ContactUs from '../components/ContactUs';
-import PageHeader from '../components/PageHeader';
 
 const ContactUsPage = () => {
   return (
     <div className="page-container">
-      <PageHeader 
-        title="Contact Us" 
-        backgroundImage="/images/contact-bg.jpg"
-        description="Get in touch with our team"
-      />
+      <div className="contact-page-header">
+        <div className="contact-header-content">
+          <h1 className="text-gray-900">Contact Us</h1>
+          <p>Get in touch with our team</p>
+        </div>
+      </div>
       <ContactUs />
     </div>
   );

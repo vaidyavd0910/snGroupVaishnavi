@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import "./PageStyles.css";
 import { useNavigate } from "react-router-dom";
-import Loader from '../components/Loader';
 import ImageCarousel from "../components/common/ImageCarousel";
 import ShareButton from "../components/common/ShareButton";
 import api from "../utils/api";
+import PageLoader from "../components/PageLoader";
+import usePageLoader from "../hooks/usePageLoader";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -16,6 +17,7 @@ const Gallery = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const isPageLoading = usePageLoader();
 
   // Fetch gallery items from API
   useEffect(() => {
@@ -76,8 +78,8 @@ const Gallery = () => {
 
   const columnItems = getColumnItems();
 
-  if (loading) {
-    return <Loader text="Loading gallery..." />;
+  if (isPageLoading) {
+    return <PageLoader subtitle="Loading gallery..." />;
   }
 
   return (

@@ -93,6 +93,31 @@
   --transition-slow: 300ms ease-in-out;
 }
 
+/* Swiper arrows ko chhota aur card ke bahar dikhane ke liye */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #333;              /* arrow ka color */
+  width: 28px !important;   /* chhota width */
+  height: 28px !important;  /* chhota height */
+  background: white;        /* arrow ka background */
+  border-radius: 9999px;    /* gol shape */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 14px !important;  /* arrow icon size */
+}
+
+.swiper-button-prev {
+  left: -40px !important;   /* card ke bahar dikhane ke liye */
+}
+
+.swiper-button-next {
+  right: -40px !important;  /* card ke bahar dikhane ke liye */
+}
+
+
 /* Base Styles */
 * {
   box-sizing: border-box;
@@ -149,6 +174,24 @@ a {
 
 a:hover {
   color: var(--color-primary-700);
+}
+
+/* Navbar specific styles to override default link colors */
+.navbar-link {
+  color: #101840 !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #D14343 !important;
+}
+
+.navbar-link.active {
+  color: #D14343 !important;
+}
+
+.navbar-link.active:hover {
+  color: #D14343 !important;
 }
 
 /* Utility Classes */

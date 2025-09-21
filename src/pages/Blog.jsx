@@ -5,10 +5,11 @@ import api from '../utils/api';
 import { toast } from 'react-toastify';
 import "./PageStyles.css";
 import "./blog.css";
-import Loader from "../components/Loader";
 import { useNavigate } from 'react-router-dom';
 import ImageCarousel from "../components/common/ImageCarousel";
 import ShareButton from "../components/common/ShareButton";
+import PageLoader from "../components/PageLoader";
+import usePageLoader from "../hooks/usePageLoader";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,6 +18,7 @@ const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const isPageLoading = usePageLoader();
 
   useEffect(() => {
     fetchPosts();
@@ -59,12 +61,8 @@ const Blog = () => {
       );
   };
 
-  if (loading) {
-    return (
-      <div className="page-container">
-        <Loader text="Loading blog posts..." />
-      </div>
-    );
+  if (isPageLoading) {
+    return <PageLoader subtitle="Loading blog posts..." />;
   }
 
   return (
