@@ -10,7 +10,7 @@ const GallerySection = () => {
       id: 1,
       icon: FaHeart,
       title: 'Healthcare Access',
-      value: '50,000+',
+      value: '1.5K+',
       description: 'People received medical care',
       color: 'from-primary-500 to-primary-500'
     },
@@ -18,7 +18,7 @@ const GallerySection = () => {
       id: 2,
       icon: FaGraduationCap,
       title: 'Education Support',
-      value: '25,000+',
+      value: '10K+',
       description: 'Students supported',
       color: 'from-primary-500 to-primary-500'
     },
@@ -34,7 +34,7 @@ const GallerySection = () => {
       id: 4,
       icon: FaGlobe,
       title: 'Environmental Impact',
-      value: '10,000+',
+      value: '1Cr +',
       description: 'Trees planted',
       color: 'from-primary-500 to-primary-500'
     },
@@ -42,7 +42,7 @@ const GallerySection = () => {
       id: 5,
       icon: FaHandHoldingHeart,
       title: 'Disaster Relief',
-      value: '15,000+',
+      value: '1.7K+',
       description: 'Families helped',
       color: 'from-primary-500 to-primary-500'
     },
@@ -50,7 +50,7 @@ const GallerySection = () => {
       id: 6,
       icon: FaStar,
       title: 'Volunteer Hours',
-      value: '500K+',
+      value: '50k +',
       description: 'Hours of service',
       color: 'from-primary-500 to-primary-500'
     }
