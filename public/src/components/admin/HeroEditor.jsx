@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../utils/api';
 import { toast } from 'react-toastify';
+import ImageCropper from '../common/ImageCropper';
 import './HeroEditor.css';
 
 const HeroEditor = () => {
@@ -147,11 +148,14 @@ const HeroEditor = () => {
 
         <div className="form-group">
           <label>Background Images</label>
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={handleImageChange}
+          <ImageCropper
+            onImageCropped={(image) => {
+              setImageFiles([...imageFiles, image]);
+            }}
+            aspectRatio={21 / 9}
+            maxWidth={2560}
+            maxHeight={1080}
+            buttonText="Add Hero Background Image"
           />
           <small>Select multiple images for the background slideshow</small>
         </div>

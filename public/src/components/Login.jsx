@@ -26,16 +26,33 @@ const Login = () => {
     setError('');
     setLoading(true);
 
+    console.log('📝 Login Form - FormData:', formData);
+    console.log('📝 Login Form - Email:', formData.email);
+    console.log('📝 Login Form - Password length:', formData.password ? formData.password.length : 'UNDEFINED');
+    console.log('📝 Login Form - Password value:', formData.password ? '***' : 'MISSING');
+
     try {
-      const response = await login(formData);
-      // Use the user from response or context
-      const userData = response?.user || (await authService.getCurrentUser());
-      if (userData.role === 'admin') {
-        navigate('/admin');
-      } else if (userData.role === 'subadmin') {
-        navigate('/subadmin');
+      const response = await login(formData.email, formData.password);
+      
+      if (response.success) {
+        const userData = response.user;
+        
+        // Debug: Log user data to console
+        console.log('Login - User data:', userData);
+        console.log('Login - User role:', userData.role);
+        console.log('Login - User roles:', userData.roles);
+        
+        // Redirect based on user role
+        if (userData.role === 'admin' || (userData.roles && userData.roles.includes('ADMIN'))) {
+          console.log('Redirecting to admin dashboard');
+          navigate('/admin');
+        } else if (userData.role === 'subadmin') {
+          navigate('/subadmin');
+        } else {
+          navigate('/dashboard');
+        }
       } else {
-        navigate('/profile');
+        setError(response.error || 'Login failed. Please try again.');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');

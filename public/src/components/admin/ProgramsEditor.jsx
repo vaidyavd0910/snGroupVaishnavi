@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../utils/api';
 import { toast } from 'react-toastify';
-import MultipleImageUpload from '../common/MultipleImageUpload';
+import ImageCropper from '../common/ImageCropper';
 
 const ProgramsEditor = () => {
   const [programs, setPrograms] = useState([]);
@@ -232,12 +232,38 @@ const ProgramsEditor = () => {
         {/* Multiple Image Upload */}
         <div className="form-group">
           <label>Program Images</label>
-          <MultipleImageUpload
-            images={images}
-            onImagesChange={handleImagesChange}
-            maxImages={10}
-            className="program-images-upload"
+          <ImageCropper
+            onImageCropped={(image) => {
+              const newImage = {
+                id: Date.now(),
+                file: image,
+                preview: URL.createObjectURL(image),
+                name: image.name,
+                size: image.size
+              };
+              handleImagesChange([...images, newImage]);
+            }}
+            aspectRatio={4 / 3}
+            maxWidth={1600}
+            maxHeight={1200}
+            buttonText="Add Program Image"
           />
+          {images.length > 0 && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '10px', marginTop: '10px' }}>
+              {images.map((img) => (
+                <div key={img.id} style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden' }}>
+                  <img src={img.preview} alt={img.name} style={{ width: '100%', height: '120px', objectFit: 'cover' }} />
+                  <button
+                    type="button"
+                    onClick={() => handleImagesChange(images.filter(i => i.id !== img.id))}
+                    style={{ position: 'absolute', top: '5px', right: '5px', background: 'red', color: 'white', border: 'none', borderRadius: '50%', width: '24px', height: '24px', cursor: 'pointer' }}
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Existing Images Display */}

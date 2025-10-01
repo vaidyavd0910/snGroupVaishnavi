@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import HeroEditor from '../components/admin/HeroEditor';
 import StatsEditor from '../components/admin/StatsEditor';
 import TestimonialsEditor from '../components/admin/TestimonialsEditor';
+import HeroStatsEditor from '../components/admin/HeroStatsEditor';
 import VolunteersTable from '../components/admin/VolunteersTable';
 import ProgramsEditor from '../components/admin/ProgramsEditor';
 import EventsEditor from '../components/admin/EventsEditor';
@@ -15,14 +16,16 @@ import EmergencyContactManagement from '../components/admin/EmergencyContactMana
 import AryaMitraEnquiryManagement from '../components/admin/AryaMitraEnquiryManagement';
 import ImpactStoriesEditor from '../components/admin/ImpactStoriesEditor';
 import ImportantUpdates from '../components/ImportantUpdates';
+// CRM Components
+import AdminDashboardCRM from '../components/admin/AdminDashboardCRM';
 import api from '../utils/api';
 import '../styles/AdminDashboard.css';
-import { FaTachometerAlt, FaChartBar, FaUsers, FaRegImages, FaRegCalendarAlt, FaRegNewspaper, FaRegComments, FaDonate, FaMoneyCheckAlt, FaUserFriends, FaImages, FaExclamationTriangle, FaRegBell, FaSearch, FaHeartbeat } from 'react-icons/fa';
+import { FaTachometerAlt, FaChartBar, FaUsers, FaRegImages, FaRegCalendarAlt, FaRegNewspaper, FaRegComments, FaDonate, FaMoneyCheckAlt, FaUserFriends, FaImages, FaExclamationTriangle, FaRegBell, FaSearch, FaHeartbeat, FaDatabase } from 'react-icons/fa';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line, CartesianGrid, Legend } from 'recharts';
 import './Admin.css';
 
 const AdminDashboard = () => {
-  const [activeTab, setActiveTab] = useState('hero');
+  const [activeTab, setActiveTab] = useState('hero-stats');
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [payments, setPayments] = useState([]);
@@ -35,6 +38,8 @@ const AdminDashboard = () => {
 
   // Sidebar menu items with icons
   const sidebarItems = [
+    // { key: 'hero', label: 'Hero Section', icon: <FaTachometerAlt /> },
+    { key: 'hero-stats', label: 'Hero Statistics', icon: <FaChartBar /> },
     { key: 'stats', label: 'Statistics', icon: <FaChartBar /> },
     { key: 'impact-stories', label: 'Impact Stories', icon: <FaHeartbeat /> },
     { key: 'testimonials', label: 'Testimonials', icon: <FaRegComments /> },
@@ -49,6 +54,7 @@ const AdminDashboard = () => {
     { key: 'donations', label: 'Donation Cards', icon: <FaDonate /> },
     { key: 'payments', label: 'Payments', icon: <FaMoneyCheckAlt /> },
     { key: 'users', label: 'Users', icon: <FaUserFriends /> },
+    { key: 'crm', label: 'CRM System', icon: <FaDatabase /> },
     { key: 'updates', label: 'Important Updates', icon: <FaRegBell /> }
   ];
 
@@ -121,6 +127,7 @@ const AdminDashboard = () => {
       </div>
       <div className="admin-content">
         {activeTab === 'hero' && <HeroEditor />}
+        {activeTab === 'hero-stats' && <HeroStatsEditor />}
         {activeTab === 'stats' && <StatsEditor />}
         {activeTab === 'impact-stories' && <ImpactStoriesEditor />}
         {activeTab === 'testimonials' && <TestimonialsEditor />}
@@ -244,6 +251,7 @@ const AdminDashboard = () => {
             )}
           </div>
         )}
+        {activeTab === 'crm' && <AdminDashboardCRM />}
         {activeTab === 'updates' && <ImportantUpdates />}
       </div>
     </div>

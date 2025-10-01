@@ -2,55 +2,49 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaHeart, FaHandHoldingHeart, FaUsers, FaGlobe, FaArrowRight, FaPlay } from 'react-icons/fa';
+import api from '../utils/api';
 
 const Hero = () => {
   const [counts, setCounts] = useState({
-    donations: 0,
-    transactions: 0,
-    ngos: 0,
-    volunteers: 0,
-    raised: 0
+    donations: "0",
+    transactions: "0", 
+    ngos: "0",
+    volunteers: "0",
+    raised: "0"
+  });
+  
+  const [targets, setTargets] = useState({
+    donations: "10",
+    transactions: "1",
+    ngos: "1200",
+    volunteers: "50",
+    raised: "10"
   });
 
+  const [heroImage, setHeroImage] = useState(null);
+
+  // Fetch stats from API
   useEffect(() => {
-    const animateNumbers = () => {
-      const targets = {
-        donations: 10,
-        transactions: 1,
-        ngos: 1200,
-        volunteers: 50,
-        raised: 10
-      };
-
-      const duration = 2000;
-      const steps = 60;
-      const stepDuration = duration / steps;
-
-      let currentStep = 0;
-
-      const interval = setInterval(() => {
-        currentStep++;
-        const progress = currentStep / steps;
-
-        setCounts({
-          donations: Math.floor(targets.donations * progress),
-          transactions: Math.floor(targets.transactions * progress),
-          ngos: Math.floor(targets.ngos * progress),
-          volunteers: Math.floor(targets.volunteers * progress),
-          raised: Math.floor(targets.raised * progress)
-        });
-
-        if (currentStep >= steps) {
-          clearInterval(interval);
+    const fetchStats = async () => {
+      try {
+        const response = await api.get('/hero-stats');
+        if (response.data.success) {
+          setTargets(response.data.stats);
+          setHeroImage(response.data.stats.heroImage);
         }
-      }, stepDuration);
-
-      return () => clearInterval(interval);
+      } catch (error) {
+        console.error('Error fetching hero stats:', error);
+        // Keep default values if API fails
+      }
     };
-
-    const timer = setTimeout(animateNumbers, 500);
-    return () => clearTimeout(timer);
+    
+    fetchStats();
   }, []);
+
+  useEffect(() => {
+    // Since we're now using text values, just set them directly
+    setCounts(targets);
+  }, [targets]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -102,6 +96,19 @@ const Hero = () => {
     <motion.section 
       className="relative min-h-screen bg-[#F2F2F2] overflow-hidden"
     >
+      {/* Hero Background Image */}
+      {heroImage && (
+        <div className="absolute inset-0">
+          <img 
+            src={heroImage} 
+            alt="Hero background" 
+            className="w-full h-full object-cover"
+            style={{ objectFit: 'cover' }}
+          />
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
+      )}
+
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full">
@@ -180,7 +187,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="text-xl sm:text-2xl lg:text-3xl font-bold  text-gray-900 mb-1">
-                  ₹{counts.donations}+ Lakh
+                  {counts.donations}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600">Worth Donations</div>
               </motion.div>
@@ -196,7 +203,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
-                  {counts.transactions}K
+                  {counts.transactions}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600">Donor Transactions</div>
               </motion.div>
@@ -212,7 +219,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
-                  {counts.ngos}+
+                  {counts.ngos}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600">NGOs Impacted</div>
               </motion.div>
@@ -276,17 +283,42 @@ const Hero = () => {
             >
               {/* Central Image */}
               <div className="relative w-full h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-white/20 flex items-center justify-center overflow-hidden">
-                <div className="text-center">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gradient-to-r from-red-500 to-red-500 rounded-full flex items-center justify-center mb-4 mx-auto"
-                  >
-                    <FaHeart className="text-white text-2xl sm:text-3xl lg:text-4xl" />
-                  </motion.div>
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Hero Image</h3>
-                  <p className="text-gray-600 text-sm sm:text-base">Premium Visual Content</p>
-                </div>
+                {heroImage ? (
+                  <div className="relative w-full h-full">
+                    <img 
+                      src={heroImage} 
+                      alt="Hero content" 
+                      className="w-full h-full object-cover rounded-2xl sm:rounded-3xl"
+                      style={{ objectFit: 'cover' }}
+                    />
+                    <div className="absolute inset-0 bg-black/20 rounded-2xl sm:rounded-3xl"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                          className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 mx-auto"
+                        >
+                          <FaHeart className="text-white text-xl sm:text-2xl lg:text-3xl" />
+                        </motion.div>
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 drop-shadow-lg">Hero Image</h3>
+                        <p className="text-white/90 text-sm sm:text-base drop-shadow-lg">Premium Visual Content</p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gradient-to-r from-red-500 to-red-500 rounded-full flex items-center justify-center mb-4 mx-auto"
+                    >
+                      <FaHeart className="text-white text-2xl sm:text-3xl lg:text-4xl" />
+                    </motion.div>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Hero Image</h3>
+                    <p className="text-gray-600 text-sm sm:text-base">Premium Visual Content</p>
+                  </div>
+                )}
               </div>
 
               {/* Floating Cards */}
@@ -301,7 +333,7 @@ const Hero = () => {
                     <FaUsers className="text-white text-sm sm:text-lg lg:text-xl" />
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">{counts.volunteers}K+</div>
+                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">{counts.volunteers}</div>
                     <div className="text-xs sm:text-sm text-gray-600">Volunteers</div>
                   </div>
                 </div>
@@ -318,7 +350,7 @@ const Hero = () => {
                     <FaHeart className="text-white text-sm sm:text-lg lg:text-xl" />
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">₹{counts.raised}M+</div>
+                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">{counts.raised}</div>
                     <div className="text-xs sm:text-sm text-gray-600">Raised</div>
                   </div>
                 </div>

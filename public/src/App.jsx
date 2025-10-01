@@ -4,7 +4,6 @@ import { AnimatePresence } from 'framer-motion';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './context/AuthContext';
-import { BrowserRouter as Router2, useLocation as useLocation2 } from 'react-router-dom';
 import Home from './pages/Home';
 import AdminDashboard from './pages/AdminDashboard';
 import Login from './components/Login';
@@ -13,6 +12,7 @@ import AdminRoute from './components/Auth/AdminRoute';
 import AccessDenied from './components/AccessDenied';
 import './App.css';
 import './styles/DonationCards.css';
+import './styles/neumorphism.css';
 import Footer from './components/Footer';
 // Layout components
 import Navbar from './components/Navbar';
@@ -45,6 +45,11 @@ import EventDetails from './pages/EventDetails';
 import useScrollToTop from './hooks/useScrollToTop';
 import Emergency from './pages/Emergency';
 import EmergencyDetail from './pages/EmergencyDetail';
+// Policy pages
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import ShippingPolicy from './pages/ShippingPolicy';
+import CancellationRefunds from './pages/CancellationRefunds';
 
 // Create a wrapper component to use useLocation hook
 function AppContent() {
@@ -110,6 +115,11 @@ function AppContent() {
             <Route path="/programs/:id" element={<ProgramDetails />} />
             <Route path="/blog/:id" element={<BlogDetails />} />
             <Route path="/access-denied" element={<AccessDenied />} />
+            {/* Policy Pages */}
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/shipping" element={<ShippingPolicy />} />
+            <Route path="/cancellation-refunds" element={<CancellationRefunds />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>

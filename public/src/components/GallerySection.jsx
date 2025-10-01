@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { FaHeart, FaUsers, FaGlobe, FaStar, FaArrowRight, FaQuoteLeft, FaHandHoldingHeart, FaGraduationCap, FaHeartbeat, FaHome, FaTree, FaClock } from 'react-icons/fa';
 import api from '../utils/api';
+import TestimonialsSection from './TestimonialsSection';
 
 const GallerySection = () => {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [impactStories, setImpactStories] = useState([
     {
       id: 1,
@@ -218,40 +218,6 @@ const GallerySection = () => {
     }
   }, [isInView, impactStories]);
 
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Priya Sharma',
-      role: 'Community Leader',
-      content: 'The impact SN Trust has made in our village is incredible. They\'ve not only provided education but also empowered our women with skills training.',
-      avatar: 'PS',
-      rating: 5
-    },
-    {
-      id: 2,
-      name: 'Rahul Kumar',
-      role: 'Volunteer',
-      content: 'Being part of SN Trust has been life-changing. The work we do directly impacts communities and creates lasting positive change.',
-      avatar: 'RK',
-      rating: 5
-    },
-    {
-      id: 3,
-      name: 'Dr. Anjali Patel',
-      role: 'Healthcare Partner',
-      content: 'Their healthcare initiatives have reached the most remote areas. The dedication and professionalism of the team is outstanding.',
-      avatar: 'AP',
-      rating: 5
-    }
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -303,81 +269,8 @@ const GallerySection = () => {
           ))}
         </div>
 
-        {/* Testimonials Section */}
-        <motion.div
-          className="bg-white rounded-2xl sm:rounded-3xl shadow-soft p-6 sm:p-8 lg:p-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="text-center mb-8 sm:mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
-              What Our Community Says
-            </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto px-4">
-              Hear from the people whose lives have been transformed through our initiatives
-            </p>
-          </div>
-
-          {/* Testimonials Carousel */}
-          <div className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTestimonial}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5 }}
-                className="text-center max-w-4xl mx-auto"
-              >
-                <div className="mb-6 sm:mb-8">
-                  <FaQuoteLeft className="text-3xl sm:text-4xl mx-auto mb-4 sm:mb-6 opacity-80" style={{ color: 'rgb(209, 67, 67)' }} />
-                  <p className="text-lg sm:text-xl lg:text-2xl text-gray-700 leading-relaxed mb-6 sm:mb-8 italic px-4">
-                    "{testimonials[activeTestimonial].content}"
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl" style={{ backgroundColor: 'rgb(209, 67, 67)' }}>
-                      {testimonials[activeTestimonial].avatar}
-                    </div>
-                    <div className="text-center sm:text-left">
-                      <div className="font-semibold text-gray-900 text-sm sm:text-base">
-                        {testimonials[activeTestimonial].name}
-                      </div>
-                      <div className="text-gray-600 text-xs sm:text-sm">
-                        {testimonials[activeTestimonial].role}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Rating Stars */}
-                  <div className="flex justify-center space-x-1">
-                    {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                      <FaStar key={i} className="text-yellow-400 w-4 h-4 sm:w-5 sm:h-5" />
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Testimonial Navigation Dots */}
-            <div className="flex justify-center space-x-2 mt-6 sm:mt-8">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveTestimonial(index)}
-                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                    index === activeTestimonial 
-                      ? 'scale-125' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  style={{ backgroundColor: index === activeTestimonial ? 'rgb(209, 67, 67)' : undefined }}
-                />
-              ))}
-            </div>
-          </div>
-        </motion.div>
+        {/* Professional Testimonials Section */}
+        <TestimonialsSection />
 
         {/* Call to Action */}
         <motion.div 

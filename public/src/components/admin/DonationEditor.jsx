@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import api from '../../utils/api';
 import { toast } from 'react-toastify';
+import ImageCropper from '../common/ImageCropper';
 import Loader from '../Loader';
 
 const DonationEditor = () => {
@@ -396,13 +397,17 @@ const DonationEditor = () => {
 
         <div className="form-group">
           <label>Images</label>
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/jpg"
-            onChange={handleImageChange}
-            multiple
-            className="file-input"
-            disabled={loading}
+          <ImageCropper
+            onImageCropped={(image) => {
+              setImageFiles([...imageFiles, image]);
+              const preview = URL.createObjectURL(image);
+              setImagePreviews([...imagePreviews, preview]);
+            }}
+            aspectRatio={16 / 9}
+            maxWidth={1920}
+            maxHeight={1080}
+            buttonText="Add Donation Campaign Image"
+            maxFileSize={5 * 1024 * 1024}
           />
           <div className="image-previews">
             {imagePreviews.map((preview, index) => (

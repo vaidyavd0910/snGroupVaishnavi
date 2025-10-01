@@ -63,6 +63,7 @@ const AvatarDropdown = ({ user, onLogout }) => {
     else if (user.role === 'subadmin') navigate('/subadmin');
     else navigate('/dashboard');
   };
+  
   const getInitials = (email) => email ? email.charAt(0).toUpperCase() : "U";
 
   return (

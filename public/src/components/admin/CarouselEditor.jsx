@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash, FaArrowsAlt } from 'react-icons/fa';
 import axios from 'axios';
+import ImageCropper from '../common/ImageCropper';
 import './CarouselEditor.css';
 import api from '../../utils/api';
 
@@ -254,13 +255,22 @@ const CarouselEditor = () => {
               {!editingImage && (
                 <div className="form-group">
                   <label>Image File *</label>
-                  <input
-                    type="file"
-                    onChange={handleFileChange}
-                    accept="image/jpeg,image/jpg,image/png,image/webp"
-                    required
+                  <ImageCropper
+                    onImageCropped={(image) => {
+                      setSelectedFile(image);
+                    }}
+                    aspectRatio={16 / 9}
+                    maxWidth={1920}
+                    maxHeight={1080}
+                    buttonText="Upload Carousel Image"
+                    maxFileSize={5 * 1024 * 1024}
                   />
-                  <small>Max size: 5MB. Supported formats: JPEG, PNG, WebP</small>
+                  {selectedFile && (
+                    <div style={{ marginTop: '10px', padding: '10px', background: '#f0f0f0', borderRadius: '8px' }}>
+                      <p>✅ Image selected: {selectedFile.name}</p>
+                    </div>
+                  )}
+                  <small>Max size: 5MB. Recommended: 1920x1080px</small>
                 </div>
               )}
 

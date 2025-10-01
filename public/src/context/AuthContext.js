@@ -33,14 +33,25 @@ export const AuthProvider = ({ children }) => {
     initializeAuth();
   }, []);
 
-  const login = async (credentials) => {
+  const login = async (email, password) => {
     try {
-      const response = await authService.login(credentials);
-      const userData = await authService.getCurrentUser();
-      setCurrentUser(userData);
-      return response;
+      console.log('🔑 AuthContext.js - Login called with:', { email, password: password ? '***' : 'MISSING' });
+      const response = await authService.login({ email, password });
+      console.log('📡 AuthContext.js - API response:', response);
+      
+      if (response.token) {
+        localStorage.setItem('token', response.token);
+        const userData = await authService.getCurrentUser();
+        setCurrentUser(userData);
+        localStorage.setItem('user', JSON.stringify(userData));
+        return { success: true, user: userData };
+      } else {
+        return { success: false, error: 'Login failed' };
+      }
     } catch (error) {
-      throw error;
+      console.error('❌ Login error in AuthContext.js:', error);
+      const errorMessage = error.response?.data?.message || error.message || 'Login failed';
+      return { success: false, error: errorMessage };
     }
   };
 

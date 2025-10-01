@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheck, FaTimes, FaPlus, FaTrash, FaInfoCircle, FaEdit } from 'react-icons/fa';
 import api from '../../utils/api';
+import ImageCropper from '../common/ImageCropper';
 import EmergencyContactEditModal from './EmergencyContactEditModal';
 import './EmergencyContactManagement.css';
 
@@ -799,11 +800,16 @@ const EmergencyContactManagement = () => {
                 </div>
                 <div className="form-group">
                   <label>Passport Photo</label>
-                  <input
-                    type="file"
-                    name="passportPhoto"
-                    accept="image/*"
-                    onChange={(e) => setFormData(prev => ({ ...prev, passportPhoto: e.target.files[0] }))}
+                  <ImageCropper
+                    onImageCropped={(image) => {
+                      setFormData(prev => ({ ...prev, passportPhoto: image }));
+                    }}
+                    aspectRatio={1}
+                    circular={true}
+                    maxWidth={500}
+                    maxHeight={500}
+                    buttonText="Upload Passport Photo"
+                    maxFileSize={2 * 1024 * 1024}
                   />
                 </div>
               </div>

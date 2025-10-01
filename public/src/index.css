@@ -93,6 +93,20 @@
   --transition-slow: 300ms ease-in-out;
 }
 
+/* Global Image Styling - Apply object-fit contain to all images */
+img {
+  object-fit: contain;
+}
+
+/* Optional: For images that need to cover instead of contain, add a class */
+img.object-cover {
+  object-fit: cover;
+}
+
+img.object-fill {
+  object-fit: fill;
+}
+
 /* Swiper arrows ko chhota aur card ke bahar dikhane ke liye */
 .swiper-button-next,
 .swiper-button-prev {
